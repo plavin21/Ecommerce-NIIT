@@ -45,7 +45,7 @@
           </ul>
         </li>
         <li><a href="#">Today's offer</a></li>
-        <li><a href="adding">About</a></li>
+        <li><a href="admin">Admin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="log"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>

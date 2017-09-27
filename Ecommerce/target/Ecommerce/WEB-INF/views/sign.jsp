@@ -121,6 +121,7 @@ input {
   <form method="post" action="login" >    
   	
    		<input type=email name="email" placeholder="Email ID" required="required" />
+   		<input type=text name="mobile" placeholder="Phone NO" required="required" />
         <input type=text name="name" placeholder="UserName" required="required" />
          <input type=text name="address" placeholder="Address" required="required" />
         <input name="password" input type="password" id="password"  placeholder="Password" required="required" />

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -154,8 +155,49 @@ color:#fff;
        </div>
     <div id="menu2" class="tab-pane fade">
       <h3>product</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
+      <form method="post" action="addP">
+      
+      <input type="text" name="pname" placeholder="product name" required="required" />
+    
+
+   
+        <select name="cat">
+<option value="desigType">select Category </option>
+<c:forEach var="designatee" items="${catego}">
+                       
+                            <option value="${designatee.c_id}"> ${designatee.c_title} </option>
+                       
+                    </c:forEach>         
+        
+
+  
+</select>
+
+
+
+   
+
+
+    
+        <select name="supp">
+<option value="desigType"> select Supplier </option>
+ <c:forEach var="designate" items="${suppli}">
+                       
+                            <option value="${designate.s_id}">${designate.s_name}</option>
+                       
+                    </c:forEach> 
+</select>
+
+
+
+    	
+    	<input type="text" name="price" placeholder="Price" required="required" />
+    	<input type="text" name="stock" placeholder="stock" required="required" />
+       <button type="submit" class="btn btn-primary btn-block btn-large" >Add</button>
+      
+      
+    </form>
+       </div>
     
   </div>
 </div>
