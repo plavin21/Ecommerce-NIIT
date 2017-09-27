@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -39,9 +39,9 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop by category <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Sports wears</a></li>
-            <li><a href="#">Jerseys</a></li>
-            <li><a href="#">accessories</a></li>
+          <c:forEach var="designatee" items="${catego}">
+            <li value="${designatee.c_id}"><a href="#"> ${designatee.c_title}s</a></li>
+           </c:forEach>  
           </ul>
         </li>
         <li><a href="#">Today's offer</a></li>

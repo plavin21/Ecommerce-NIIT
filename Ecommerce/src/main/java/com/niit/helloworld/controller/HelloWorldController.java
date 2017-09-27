@@ -46,11 +46,19 @@ public class HelloWorldController{
 	
 	
 	@RequestMapping("/")
-	public String index(){
+	public ModelAndView index(){
 		
-			System.out.println("hi");
-		return "index";
-		
+		System.out.println("in controller");
+		ModelAndView mv1 = new ModelAndView("index");
+		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		 System.out.println("printing");
+		 for(Category cc:l)
+			{
+				System.out.println(cc);
+			}
+				
+				mv1.addObject("catego",l);
+		return mv1;
 	}
 	
 	@RequestMapping("/log")

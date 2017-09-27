@@ -69,14 +69,14 @@
     <div class="col-sm-6">
       <div class="panel panel-primary">
         <div class="panel-heading">ADD</div>
-        <div class="panel-body"><img src="img/add1.png" class="img-responsive" width=75%  alt="Image"></div>
+        <div class="panel-body"><a href="adding"><img src="img/add1.png" class="img-responsive" width=75%  alt="Image"></a></div>
         <div class="panel-footer"></div>
       </div>
     </div>
     <div class="col-sm-6"> 
       <div class="panel panel-primary">
         <div class="panel-heading">UPDATE</div>
-        <div class="panel-body">< img src="img/update.png" class="img-responsive" width=75% alt="Image"></div>
+        <div class="panel-body"><a href=""><img src="img/update.png" class="img-responsive" width=75%  alt="Image"></a></div>
         <div class="panel-footer"></div>
       </div>
     </div>

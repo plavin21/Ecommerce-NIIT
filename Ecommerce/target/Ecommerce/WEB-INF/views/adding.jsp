@@ -71,6 +71,41 @@ body
 color:#fff;
 }
 
+
+
+select {
+
+  /* styling */
+  background-color: #000;
+  border:thin solid white;
+  border-radius: 4px;
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+
+  margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+/* arrows */
+
+
+select.classic:focus {
+ 
+  background-repeat: no-repeat;
+  border-color: red;
+  outline: 0;
+}
+
+
 </style>
 </head>
 
@@ -99,7 +134,7 @@ color:#fff;
           </ul>
         </li>
         <li><a href="#">Today's offer</a></li>
-        <li><a href="adding">About</a></li>
+        <li><a href="adding">Admin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="log"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
@@ -158,10 +193,10 @@ color:#fff;
       <form method="post" action="addP">
       
       <input type="text" name="pname" placeholder="product name" required="required" />
-    
 
-   
-        <select name="cat">
+  
+
+        <select name="cat" class="classic" style="color:#fff; width:100%; overflow:hidden" >
 <option value="desigType">select Category </option>
 <c:forEach var="designatee" items="${catego}">
                        
@@ -174,12 +209,15 @@ color:#fff;
 </select>
 
 
+<br>
+<br>
+<br>
+
 
    
 
 
-    
-        <select name="supp">
+        <select name="supp" class="classic" style="color:#fff; width:100%; overflow:hidden"  >
 <option value="desigType"> select Supplier </option>
  <c:forEach var="designate" items="${suppli}">
                        
@@ -187,6 +225,7 @@ color:#fff;
                        
                     </c:forEach> 
 </select>
+
 
 
 
