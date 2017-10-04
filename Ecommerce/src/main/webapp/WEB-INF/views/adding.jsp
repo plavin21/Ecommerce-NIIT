@@ -11,7 +11,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style >
+  
+  
+  <style >
 input[type=text] {
     width: 100%;
     padding: 12px 20px;
@@ -184,7 +186,7 @@ select.classic:focus {
 
 
 
-
+        
     	
     	<input type="text" name="price" placeholder="Price" required="required" />
     	<input type="text" name="stock" placeholder="stock" required="required" />

@@ -13,12 +13,14 @@
   <style>
   
   
- 
+
 body { 
 	width: 100%;
 	height:100%;
 	font-family: 'Open Sans', sans-serif;
 	background: #000000;
+	
+	
 	}
 input[type=text], input[type=password] {
     width: 100%;
@@ -38,10 +40,11 @@ button {
     width: 100%;
 }
 .login { 
-	position: absolute;
+	position:relative ;
 	top: 50%;
 	left: 50%;
 	margin: -150px 0 0 -150px;
+	margin-top: 20px;
 	width:300px;
 	height:300px;
 }
@@ -50,6 +53,7 @@ color: #fff;
  letter-spacing:1px; 
  text-align:center;
 }
+
 
 input { 
 	width: 100%; 
@@ -65,52 +69,12 @@ input {
 	
 }
 
- .footer {
- text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  
-    background-color: #222;
-}  </style>
+ </style>
 </head>
 <body>
+<%@ include file = "header.jsp" %>
 <body style=" background-color:#000000">
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">SPORTZ ARENA</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li ><a href="index.jsp">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop by category <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Sports wears</a></li>
-            <li><a href="#">Jerseys</a></li>
-            <li><a href="#">accessories</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Today's offer</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="log.jsp"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="cart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-     </ul>
-      
-    </div>
-    
-  </div>
- 
-</nav>
-  
+
 
 
 
@@ -121,18 +85,11 @@ input {
     	<input type="text" name="u" placeholder="Username" required="required" />
         <input type="password" name="p" placeholder="Password" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large" >Login</button>
-      <p class="message" style="color: #fff">Not registered? <a href="sign">Create an account</a></p>
+      <p class="message" style="color: #fff">Not registered? <a href="sign" style="color:#40ff00">Create an account</a></p>
     </form>
-</div></div><br><br>
-
-<footer class="footer">
-<div class="row-fluid">
-
-
-<p>&copy; 2017 sportzarena.com<p>
-
- </div>
-</footer>
+</div>
+</div>
+<%@ include file = "footer.jsp" %>
 
 </body>
 </html>

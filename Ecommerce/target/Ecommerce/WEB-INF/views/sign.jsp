@@ -31,12 +31,13 @@ input[type=text],input[type=email], input[type=password] {
     box-sizing: border-box;
 }
 .signup { 
-	position: absolute;
-	top: 35%;
+	position:relative ;
+	top: 50%;
 	left: 50%;
 	margin: -150px 0 0 -150px;
+	margin-top: 20px;
 	width:300px;
-	height:250px;
+	height:300px;
 }
 .signup h1 { 
 color: #fff;
@@ -66,52 +67,11 @@ input {
 	
 }
 
- .footer {
- text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  
-    background-color: #222;
-}  </style>
+  </style>
 </head>
 <body>
 <body style=" background-color:#000000">
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">SPORTZ ARENA</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li ><a href="index.jsp">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop by category <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Sports wears</a></li>
-            <li><a href="#">Jerseys</a></li>
-            <li><a href="#">accessories</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Today's offer</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="log.jsp"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="cart.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-     </ul>
-      
-    </div>
-    
-  </div>
- 
-</nav>
-  
+<%@ include file = "header.jsp" %>
 
 
 
@@ -127,22 +87,14 @@ input {
         <input name="password" input type="password" id="password"  placeholder="Password" required="required" />
         
 
-    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+    <p style="color:#fff">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
      <button type="submit" class="btn btn-primary btn-block btn-large" onclick=" validatePassword()" >Sign Up</button>
       
       
     
   </form>
-    </div></div><br><br>
-
-<footer class="footer">
-<div class="row-fluid">
-
-
-<p>&copy; 2017 sportzarena.com<p>
-
- </div>
-</footer>
-
+    </div>
+</div>
+<%@ include file = "footer.jsp" %>
 </body>
 </html>

@@ -5,12 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>admin</title>
- <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
+  
 </head>
 
 <body>
@@ -31,7 +29,7 @@
     <div class="col-sm-6"> 
       <div class="panel panel-primary">
         <div class="panel-heading">UPDATE</div>
-        <div class="panel-body"><a href=""><img src="img/update.png" class="img-responsive" width=75%  alt="Image"></a></div>
+        <div class="panel-body"><a href="options"><img src="img/update.png" class="img-responsive" width=75%  alt="Image"></a></div>
         <div class="panel-footer"></div>
       </div>
     </div>

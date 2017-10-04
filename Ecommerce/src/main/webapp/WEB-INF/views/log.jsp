@@ -5,20 +5,24 @@
 <html>
 <head>
   <title>Log In</title>
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
+  
+    <style>
   
   
- 
+
 body { 
 	width: 100%;
 	height:100%;
 	font-family: 'Open Sans', sans-serif;
 	background: #000000;
+	
+	
 	}
 input[type=text], input[type=password] {
     width: 100%;
@@ -38,10 +42,11 @@ button {
     width: 100%;
 }
 .login { 
-	position: absolute;
+	position:relative ;
 	top: 50%;
 	left: 50%;
 	margin: -150px 0 0 -150px;
+	margin-top: 20px;
 	width:300px;
 	height:300px;
 }
@@ -50,6 +55,7 @@ color: #fff;
  letter-spacing:1px; 
  text-align:center;
 }
+
 
 input { 
 	width: 100%; 
@@ -68,8 +74,9 @@ input {
  </style>
 </head>
 <body>
-<body style=" background-color:#000000">
 <%@ include file = "header.jsp" %>
+<body style=" background-color:#000000">
+
 
 
 
@@ -80,10 +87,11 @@ input {
     	<input type="text" name="u" placeholder="Username" required="required" />
         <input type="password" name="p" placeholder="Password" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large" >Login</button>
-      <p class="message" style="color: #fff">Not registered? <a href="sign">Create an account</a></p>
+      <p class="message" style="color: #fff">Not registered? <a href="sign" style="color:#40ff00">Create an account</a></p>
     </form>
-</div></div><br><br>
-
+</div>
+</div>
 <%@ include file = "footer.jsp" %>
+
 </body>
 </html>

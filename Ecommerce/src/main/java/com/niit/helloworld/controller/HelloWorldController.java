@@ -3,6 +3,10 @@ package com.niit.helloworld.controller;
 
 
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.validation.Valid;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.EcommerceBackEnd.DAO.ProductDAO;
@@ -62,10 +67,15 @@ public class HelloWorldController{
 	}
 	
 	@RequestMapping("/log")
-	public String log(){
+	public ModelAndView log(){
 		
-		return "log";
 		
+		ModelAndView mv1 = new ModelAndView("log");
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+				
+				mv1.addObject("catego",l);
+				return mv1;
 	}
 	
 	@RequestMapping("/addC")
@@ -138,7 +148,7 @@ public class HelloWorldController{
 		System.out.println("in controller");
 		System.out.println(name+cat+supp+price+stock);
 		Product p=new Product();
-		Category cc=new Category();
+		
 		
 		p.setName(name);
 		
@@ -149,6 +159,7 @@ public class HelloWorldController{
 	    int cati=ll.getC_id();
 	    String catii=ll.getC_title();
 	    System.out.println(cati+"  "+catii);
+	   
 	    Category ccc=new Category();
 	    ccc.setC_id(cati);
 	    ccc.setC_title(catii);;
@@ -177,15 +188,27 @@ public class HelloWorldController{
 						
 						mv1.addObject("suppli",lll);
 	
-		
-		
+						/*MultipartFile image = p.getProductImage();
+						if (image != null && !image.isEmpty()) {
+							Path path = Paths.get("D:/review/eric"
+											+ p.getId() + ".jpg");
+
+							try {
+								image.transferTo(new File(path.toString()));
+							} catch (IllegalStateException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}*/
 	
 		return mv1;
 	}
 	
 	
 	@RequestMapping("/login")
-	public ModelAndView adduser(@RequestParam("email") String mail,@RequestParam("name") String name,@RequestParam("address")
+	public ModelAndView adduser(@RequestParam("email") String mail,@RequestParam("mobile") int no,@RequestParam("name") String name,@RequestParam("address")
 	String addr,@RequestParam("password") String pass) {
 		System.out.println("in controller");
 		System.out.println(mail+name+addr+pass);
@@ -193,6 +216,7 @@ public class HelloWorldController{
 		User u=new User();
 	
 		u.setMail(mail);
+		u.setNumber(no);
 		u.setUsername(name);
 		u.setAddress(addr);
 		u.setPassword(pass);
@@ -215,23 +239,145 @@ public class HelloWorldController{
    
 	
 	@RequestMapping("/cart")
-	public String cart(){
+	public ModelAndView cart(){
 		
-		return "cart";
+		ModelAndView mv1 = new ModelAndView("cart");
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+				
+				mv1.addObject("catego",l);
+				return mv1;
 		
 	}
 	
-	@RequestMapping("/admin")
-	public String admin(){
+	@RequestMapping("/options")
+	public ModelAndView options(){
+		ModelAndView mv1 = new ModelAndView("options");
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
-		return "admin";
+				
+				mv1.addObject("catego",l);
+				return mv1;
+		
+	}
+	
+	@RequestMapping("/updating")
+	public ModelAndView updating(){
+		ModelAndView mv1 = new ModelAndView("updating");
+		
+ArrayList<Product> ll=(ArrayList<Product>)pdao.getAllProducts();
+		
+		
+		mv1.addObject("productlis",ll);
+		
+		
+		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+				
+				mv1.addObject("catego",l);
+				return mv1;
+		
+	}
+	
+	
+	
+	@RequestMapping("/updatingc")
+	public ModelAndView updatingc(){
+		ModelAndView mv1 = new ModelAndView("updatingc");
+		
+ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
+		
+		
+		mv1.addObject("categorylis",ll);
+		
+		
+		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+				
+				mv1.addObject("catego",l);
+				return mv1;
+		
+	}
+	
+	
+	@RequestMapping("/updatings")
+	public ModelAndView updatings(){
+		ModelAndView mv1 = new ModelAndView("updatings");
+		
+ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
+		
+		
+		mv1.addObject("supplierlis",ll);
+		
+		
+		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+				
+				mv1.addObject("catego",l);
+				return mv1;
+		
+	}
+	
+	
+	
+	@RequestMapping("/admin")
+	public ModelAndView admin(){
+		
+		ModelAndView mv1 = new ModelAndView("admin");
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+				
+				mv1.addObject("catego",l);
+				return mv1;
 		
 	}
 	@RequestMapping("/sign")
-	public String sign(){
+	public ModelAndView sign(){
+		ModelAndView mv1 = new ModelAndView("sign");
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
-		return "sign";
+				
+				mv1.addObject("catego",l);
+				return mv1;
 		
 	}
+	@RequestMapping("/catpro")
+	public ModelAndView productlist(@RequestParam ("id") int catego){
+		ModelAndView mv1 = new ModelAndView("productlist");
+		
+		ArrayList<Product> ll=(ArrayList<Product>)pdao.getAllProducts();
+		
+		
+		mv1.addObject("productli",ll);
+		
+		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+				
+				mv1.addObject("catego",l);
+				return mv1;
+		
+	} 
+	
+	@RequestMapping("/prolis")
+	public ModelAndView productdetail(@RequestParam ("id") int prod){
+		ModelAndView mv1 = new ModelAndView("product");
+		Product ll=new Product();
+		 ll=pdao.getProductById(prod);
+		
+		
+		mv1.addObject("produc",ll);
+		
+		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+				
+				mv1.addObject("catego",l);
+				return mv1;
+		
+	} 
 	
 }

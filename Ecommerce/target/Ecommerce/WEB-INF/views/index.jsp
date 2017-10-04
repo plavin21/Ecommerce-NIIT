@@ -126,23 +126,6 @@
   </div>
 </div><br><br>
 
-<footer class="footer">
-<div class="row-fluid">
-
-<div class="span2">
-<h3>Information</h3>
-<a href="contact.html">CONTACT</a><br>
-
-<a href="#">LEGAL NOTICE</a><br>
-<a href="#">TERMS AND CONDITIONS</a><br>
-<a href="#">ABOUT US</a><br>
- </div>
-
- <br>
-<p>&copy; 2017 sportzarena.com<p>
-
- </div>
-</footer>
-
+<%@ include file = "footer.jsp" %>
 </body>
 </html>
