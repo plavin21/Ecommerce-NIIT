@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>update</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
@@ -65,21 +67,28 @@
 							
 						</tr>
 					</thead>
+					<c:forEach var="designatee" items="${productlis}">
 					<tbody>
 						<tr>
 	<td data-th="Product">
 		<div class="row">
 	<div class="col-sm-2 "><img src="img/3.jpg" alt="Chania" width="100" height="100" class="img-responsive"/></div>
+			
 			<div class="col-sm-10">
-			<h4 class="nomargin">MAN UTD JERSEY</h4>
-			<p>paul pogba man utd t shirt NO 6
-	</p>	</div>
+			  
+			<h4 class="nomargin"> ${designatee.name}</h4>
+			<p>        </p>
+			
+		</div>
      </div>
 	</td>
-	<td data-th="update">EDIT</td>
-	<td data-th="update1">DELETE</td>
-</tr>
+	<td data-th="update"><a  href="proupd?id=${designatee.id}">EDIT</a></td>
+	<td data-th="update1"><a href="prodel?id=${designatee.id}">DELETE</a></td>
+	
+	</tr>
 </tbody>
+	 </c:forEach>
+
 </table>
 </div>
 

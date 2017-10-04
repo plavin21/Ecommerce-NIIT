@@ -27,7 +27,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop by category <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <c:forEach var="designatee" items="${catego}">
-            <li value="${designatee.c_id}"><a href="#"> ${designatee.c_title}</a></li>
+            <li value="${designatee.c_id}"><a href="catpro?id=${designatee.c_id}"> ${designatee.c_title}</a> </li>
            </c:forEach>  
           </ul>
         </li>

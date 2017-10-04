@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
+  
+ <style>
   
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
@@ -18,6 +19,11 @@
       padding:2px; 
   }
  
+panel-heading{
+  
+  color:#000;
+  
+ }
   .footer { text-align: center;background-color:#222; color:#eee; padding: 28px 8px 18px; margin-top: 18px;}
 .footer a{color:#bbb; font-size:12px;}
   </style>
@@ -75,56 +81,24 @@
 
 <div class="container">  
 <h2 style="color:#fff">Choose Your Sport</h2><br>  
+ 
   <div class="row">
+   <c:forEach var="designatee" items="${catego}">
     <div class="col-sm-4">
       <div class="panel panel-primary">
-        <div class="panel-heading">CRICKET</div>
-        <div class="panel-body"><img src="img/CR.jpg" class="img-responsive" width=75%  alt="Image"></div>
-        <div class="panel-footer"></div>
+       
+            <div class="panel-heading" > </div>
+             <div class="panel-footer"><a href="catpro?id=${designatee.c_id}"> ${designatee.c_title}</a></div>
+           
+        
+        
+       
       </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">FOOTBALL</div>
-        <div class="panel-body"><img src="img/FT.jpg" class="img-responsive" width=75% alt="Image"></div>
-        <div class="panel-footer"></div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">BADMINTON</div>
-        <div class="panel-body"><img src="img/BD.png" class="img-responsive"  width=75% alt="Image"></div>
-        <div class="panel-footer"></div>
-      </div>
-    </div>
   </div>
-</div><br>
-
-<div class="container">    
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">CYCLING</div>
-        <div class="panel-body"><img src="img/BC.png" class="img-responsive" width=75% alt="Image"></div>
-        <div class="panel-footer"></div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">VOLLEYBALL</div>
-        <div class="panel-body"><img src="img/VL.png" class="img-responsive" width=75% alt="Image"></div>
-        <div class="panel-footer"></div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">TENNIS</div>
-        <div class="panel-body"><img src="img/TN.png" class="img-responsive" width=75% alt="Image"></div>
-        <div class="panel-footer"></div>
-      </div>
-    </div>
+    </c:forEach> 
   </div>
-</div><br><br>
+ 
+  </div> 
 
 <%@ include file = "footer.jsp" %>
 </body>

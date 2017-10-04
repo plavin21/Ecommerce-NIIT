@@ -348,7 +348,7 @@ ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
 	public ModelAndView productlist(@RequestParam ("id") int catego){
 		ModelAndView mv1 = new ModelAndView("productlist");
 		
-		ArrayList<Product> ll=(ArrayList<Product>)pdao.getAllProducts();
+		ArrayList<Product> ll=(ArrayList<Product>)pdao.getProdBycatId(catego);
 		
 		
 		mv1.addObject("productli",ll);
