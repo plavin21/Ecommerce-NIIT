@@ -380,4 +380,58 @@ ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
 		
 	} 
 	
+	@RequestMapping("/catdel")
+	public ModelAndView categorylist(@RequestParam ("id") int catego){
+		ModelAndView mv1 = new ModelAndView("updatingc");
+		
+		cdao.deleteCategory(catego);
+		
+         ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
+		
+		
+		mv1.addObject("categorylis",ll);
+		
+		
+		
+		
+			return mv1;
+		
+	} 
+	
+	@RequestMapping("/supdel")
+	public ModelAndView supplierlist(@RequestParam ("id") int supp){
+		ModelAndView mv1 = new ModelAndView("updatings");
+		
+		sdao.deleteSupp(supp);
+		
+         ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
+		
+		
+		mv1.addObject("categorylis",ll);
+		
+		
+		
+		
+			return mv1;
+		
+	} 
+	
+	@RequestMapping("/prodel")
+	public ModelAndView produlist(@RequestParam ("id") int productId){
+		ModelAndView mv1 = new ModelAndView("updating");
+		
+		pdao.deleteProduct(productId);
+		
+         ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
+		
+		
+		mv1.addObject("categorylis",ll);
+		
+		
+		
+		
+			return mv1;
+		
+	} 
+	
 }
