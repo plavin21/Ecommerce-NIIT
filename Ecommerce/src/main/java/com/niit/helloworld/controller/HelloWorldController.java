@@ -396,8 +396,53 @@ ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
 		
 			return mv1;
 		
-	} 
+	}
 	
+	@RequestMapping("/catupd")
+	public ModelAndView categoryupd(@RequestParam ("id") int catego){
+		ModelAndView mv1 = new ModelAndView("catupdate");
+		Category l=new Category();
+		l=cdao.getcatbyid(catego);
+		mv1.addObject("category",l);
+         ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
+		
+		
+		mv1.addObject("categorylis",ll);
+		
+		
+		
+		
+			return mv1;
+		
+	} 
+	@RequestMapping("/updatecategory")
+	public ModelAndView updatecategory(@RequestParam("catid") int id ,@RequestParam("catname") String name) {
+	System.out.println("in controller");
+		System.out.println(name);
+		Category c=new Category();
+		c.setC_id(id);
+		c.setC_title(name);
+		
+		cdao.editcat(c);
+		ModelAndView mv1 = new ModelAndView("updatingc");		
+ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
+		
+
+		mv1.addObject("categorylis",ll);
+		
+		
+		
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		
+				
+				mv1.addObject("catego",l);
+				return mv1;
+		
+		
+		
+		
+		
+	} 
 	@RequestMapping("/supdel")
 	public ModelAndView supplierlist(@RequestParam ("id") int supp){
 		ModelAndView mv1 = new ModelAndView("updatings");
