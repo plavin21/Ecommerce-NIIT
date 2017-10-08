@@ -97,13 +97,13 @@ public class HelloWorldController{
 	
 	
 	@RequestMapping("/addS")
-	public ModelAndView addsup(@RequestParam("sname") String name) {
 		System.out.println("in controller");
 		System.out.println(name);
 		
 		Supplier s=new Supplier();
 	
 		s.setS_name(name);
+		/*s.setS_no(no);*/
 		
 		
 		
@@ -159,7 +159,7 @@ public class HelloWorldController{
 	    int cati=ll.getC_id();
 	    String catii=ll.getC_title();
 	    System.out.println(cati+"  "+catii);
-	   
+	  
 	    Category ccc=new Category();
 	    ccc.setC_id(cati);
 	    ccc.setC_title(catii);;
@@ -443,6 +443,9 @@ ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
 		
 		
 	} 
+	
+	
+	
 	@RequestMapping("/supdel")
 	public ModelAndView supplierlist(@RequestParam ("id") int supp){
 		ModelAndView mv1 = new ModelAndView("updatings");
@@ -460,6 +463,54 @@ ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
 			return mv1;
 		
 	} 
+	@RequestMapping("/supupd")
+	public ModelAndView supupd(@RequestParam ("id") int sup){
+		ModelAndView mv1 = new ModelAndView("supupdate");
+		Supplier s=new Supplier();
+		
+		s=sdao.getsuppbyid(sup);
+		mv1.addObject("supplier",s);
+         ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
+		
+		
+		mv1.addObject("categorylis",ll);
+		
+		
+		
+		
+			return mv1;
+		
+	} 
+	
+	
+	@RequestMapping("/updatesupplier")
+	public ModelAndView updatesupplier(@RequestParam("supid") int id ,@RequestParam("supname") String name) {
+	System.out.println("in controller");
+		System.out.println(name);
+		Supplier s=new Supplier();
+		s.setS_id(id);
+		s.setS_name(name);
+		
+		sdao.editsupp(s);
+		ModelAndView mv1 = new ModelAndView("updatings");		
+		
+		
+		ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
+				
+				
+				mv1.addObject("supplierlis",ll);
+				
+				
+				
+				ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+				
+						
+						mv1.addObject("catego",l);
+						return mv1;
+		
+		
+	} 
+	
 	
 	@RequestMapping("/prodel")
 	public ModelAndView produlist(@RequestParam ("id") int productId){
@@ -477,6 +528,97 @@ ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
 		
 			return mv1;
 		
+	}
+	
+	@RequestMapping("/proupd")
+	public ModelAndView proupd(@RequestParam ("id") int pro){
+		ModelAndView mv1 = new ModelAndView("proupdate");
+		Product p=new Product();
+		
+		p=pdao.getProductById(pro);
+		mv1.addObject("product",p);
+         ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
+		
+		
+		mv1.addObject("categorylis",ll);
+		
+		
+		
+		
+		 ArrayList<Category> a=(ArrayList<Category>)cdao.getallcategories();
+			
+				mv1.addObject("category",a);
+		ArrayList<Supplier> b=(ArrayList<Supplier>)sdao.getallsuppliers();
+		
+				
+				mv1.addObject("supplier",b);
+		
+		
+		
+			return mv1;
+		
 	} 
+	
+	
+	@RequestMapping("/updateproduct")
+	public ModelAndView updateproduct(@RequestParam("proid") int id ,@RequestParam("proname") String name,@RequestParam("cat") int cat,
+			@RequestParam("supp") int supp,
+			@RequestParam("price") int price,@RequestParam("stock") int stock){
+	System.out.println("in controller");
+		System.out.println(name);
+		Product p=new Product();
+		p.setId(id);
+		p.setName(name);
+		p.setPrice(price);
+		p.setStock(stock);
+		
+		Category ll=new Category();
+		ll=cdao.getcatbyid(cat);
+	    int cati=ll.getC_id();
+	    String catii=ll.getC_title();
+	    System.out.println(cati+"  "+catii);
+	  
+	    Category ccc=new Category();
+	    ccc.setC_id(cati);
+	    ccc.setC_title(catii);;
+	    p.setCategory(ccc);
+	    
+	    Supplier ss=new Supplier();
+		ss=sdao.getsuppbyid(supp);
+	    int sup1=ss.getS_id();
+	    String sup2=ss.getS_name();
+	    
+	    Supplier sss=new Supplier();
+	    sss.setS_id(sup1);
+	    sss.setS_name(sup2);;
+	   
+	    p.setSupplier(sss);
+		
+		
+		pdao.editProduct(p);
+		ModelAndView mv1 = new ModelAndView("updating");
+		
+		
+		
+		
+		
+		ArrayList<Product> gp=(ArrayList<Product>)pdao.getAllProducts();
+				
+				
+				mv1.addObject("productlis",gp);
+				
+				
+				
+				ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+				
+						
+						mv1.addObject("catego",l);
+						return mv1;
+				
+		
+		
+	} 
+	
+	
 	
 }
