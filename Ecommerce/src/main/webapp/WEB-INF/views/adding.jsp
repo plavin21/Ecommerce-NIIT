@@ -148,7 +148,7 @@ select.classic:focus {
        </div>
     <div id="menu2" class="tab-pane fade">
       <h3>product</h3>
-      <form method="post" action="addP">
+      <form method="post" action="addP" enctype="multipart/form-data">
       
       <input type="text" name="pname" placeholder="product name" required="required" />
 
@@ -190,6 +190,7 @@ select.classic:focus {
     	
     	<input type="text" name="price" placeholder="Price" required="required" />
     	<input type="text" name="stock" placeholder="stock" required="required" />
+    	<input type="file" name="img" placeholder="browse" required="required" />
        <button type="submit" class="btn btn-primary btn-block btn-large" >Add</button>
       
       

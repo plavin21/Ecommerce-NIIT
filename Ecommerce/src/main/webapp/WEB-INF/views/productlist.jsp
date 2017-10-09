@@ -95,19 +95,21 @@ $(document).ready(function() {
     </div>
     <div id="products" class="row list-group">
         <div class="item  col-xs-4 col-lg-4">
-            <div class="thumbnail">
-                <c:forEach var="designatee" items="${productli}">
+            <div class="thumbnail"><h1>
+            PRODUCTS
+            </h1>
+                <c:forEach var="design" items="${productlist}">
                 <h4 class="group inner list-group-item-heading">
-                        ${designatee.name}
+                        ${design.name}
              </h4>
                    
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
                             <p class="lead">
-                                ${designatee.price}</p>
+                                ${design.price}</p>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="prolis?id=${designatee.id}">like it</a>
+                            <a class="btn btn-success" href="prolis?id=${design.id}">like it</a>
                         </div>
                     </div>
          

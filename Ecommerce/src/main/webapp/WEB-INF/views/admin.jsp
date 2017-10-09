@@ -22,14 +22,14 @@
     <div class="col-sm-6">
       <div class="panel panel-primary">
         <div class="panel-heading">ADD</div>
-        <div class="panel-body"><a href="adding"><img src="img/add1.png" class="img-responsive" width=75%  alt="Image"></a></div>
+        <div class="panel-body"><a href="adding"><img src="resources/img/add1.png" class="img-responsive" width=75%  alt="Image"></a></div>
         <div class="panel-footer"></div>
       </div>
     </div>
     <div class="col-sm-6"> 
       <div class="panel panel-primary">
         <div class="panel-heading">UPDATE</div>
-        <div class="panel-body"><a href="options"><img src="img/update.png" class="img-responsive" width=75%  alt="Image"></a></div>
+        <div class="panel-body"><a href="options"><img src="resources/img/update.png" class="img-responsive" width=75%  alt="Image"></a></div>
         <div class="panel-footer"></div>
       </div>
     </div>

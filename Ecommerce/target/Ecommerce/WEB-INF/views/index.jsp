@@ -11,14 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
  <style>
-  
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 55%;
-      margin: auto;
-      padding:2px; 
-  }
- 
+
 panel-heading{
   
   color:#000;
@@ -49,7 +42,7 @@ panel-heading{
       
 
    <div class="item active">
-        <img src="img/2.jpg" alt="Chania" style="width:100%; height:200 px">
+        <img src="resources/img/2.jpg" class= alt="Chania" style="width:100%; height:600 px;">
         <div class="carousel-caption">
           <h3>Jersey cr7</h3>
           <p>CRISTIANO RONALDO UNIVERSAL SUPERSTAR</p>
@@ -58,7 +51,7 @@ panel-heading{
     
     
       <div class="item">
-        <img src="img/4.jpg" alt="Flower" style="width:100%; height:200 px">
+        <img src="resources/img/4.jpg" alt="Flower" style="width:100%; height:600 px;">
         <div class="carousel-caption">
           <h3>IBRA</h3>
           <p>THE INCREDIBLE ZLATAN </p>

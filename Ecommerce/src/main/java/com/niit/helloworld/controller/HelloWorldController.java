@@ -3,12 +3,15 @@ package com.niit.helloworld.controller;
 
 
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import javax.sound.midi.SysexMessage;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +100,7 @@ public class HelloWorldController{
 	
 	
 	@RequestMapping("/addS")
+	public ModelAndView addsup(@RequestParam("sname") String name/*,@RequestParam("sno") int no*/) {
 		System.out.println("in controller");
 		System.out.println(name);
 		
@@ -144,16 +148,17 @@ public class HelloWorldController{
 	
 	@RequestMapping("/addP")
 	public ModelAndView addpro(@RequestParam("pname") String name,@RequestParam("cat") int cat,@RequestParam("supp") int supp,
-			@RequestParam("price") int price,@RequestParam("stock") int stock) {
+			@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file ) {
 		System.out.println("in controller");
 		System.out.println(name+cat+supp+price+stock);
 		Product p=new Product();
 		
-		
+		String img=file.getOriginalFilename();
 		p.setName(name);
 		
 		p.setPrice(price);
 		p.setStock(stock);
+		 p.setImg(img);
 		Category ll=new Category();
 		ll=cdao.getcatbyid(cat);
 	    int cati=ll.getC_id();
@@ -175,6 +180,24 @@ public class HelloWorldController{
 	    sss.setS_name(sup2);;
 	   
 	    p.setSupplier(sss);
+	    
+	    /* String filepath = request.getSession().getServletContext().getRealPath("/") + "resources/product/" + file.getOriginalFilename();
+		*/
+	    String filepath ="C:/Users/USER/workspace/Ecommerce/src/main/webapp/resources/img" + file.getOriginalFilename();
+		
+		System.out.println(filepath);
+		try {
+			byte imagebyte[] = file.getBytes();
+			BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
+			fos.write(imagebyte);
+			fos.close();
+			} catch (IOException e) {
+			e.printStackTrace();
+			} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+	    
 		pdao.saveProduct1(p);
 		ModelAndView mv1 = new ModelAndView("adding");
 		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
@@ -351,7 +374,7 @@ ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
 		ArrayList<Product> ll=(ArrayList<Product>)pdao.getProdBycatId(catego);
 		
 		
-		mv1.addObject("productli",ll);
+		mv1.addObject("productlist",ll);
 		
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
@@ -531,23 +554,30 @@ ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
 	}
 	
 	@RequestMapping("/proupd")
-	public ModelAndView proupd(@RequestParam ("id") int pro){
+	public ModelAndView proupd(@RequestParam ("id") int pro/*,@RequestParam ("id2") int cat*/){
 		ModelAndView mv1 = new ModelAndView("proupdate");
+		System.out.println("hi");
 		Product p=new Product();
 		
 		p=pdao.getProductById(pro);
 		mv1.addObject("product",p);
+		
+		/*Category c=new Category();
+		c=cdao.getcatbyid(cat);
+		mv1.addObject("catego",c);
+		
+		String catii=c.getC_title();
+		System.out.println(catii);
+		*/
          ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
 		
-		
+		/*System.out.println(pro+cat);*/
 		mv1.addObject("categorylis",ll);
 		
 		
 		
 		
-		 ArrayList<Category> a=(ArrayList<Category>)cdao.getallcategories();
-			
-				mv1.addObject("category",a);
+		 
 		ArrayList<Supplier> b=(ArrayList<Supplier>)sdao.getallsuppliers();
 		
 				

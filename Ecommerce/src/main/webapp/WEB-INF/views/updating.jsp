@@ -68,6 +68,7 @@
 						</tr>
 					</thead>
 					<c:forEach var="designatee" items="${productlis}">
+					<%-- <c:forEach var="design" items="${catego}"> --%>
 					<tbody>
 						<tr>
 	<td data-th="Product">
@@ -82,12 +83,13 @@
 		</div>
      </div>
 	</td>
-	<td data-th="update"><a  href="proupd?id=${designatee.id}">EDIT</a></td>
+	<td data-th="update"><a  href="proupd?id=${designatee.id}<%-- ,id2=${design.c_id} --%>">EDIT</a></td>
 	<td data-th="update1"><a href="prodel?id=${designatee.id}">DELETE</a></td>
 	
 	</tr>
 </tbody>
-	 </c:forEach>
+	</c:forEach>
+	<%--  </c:forEach> --%>
 
 </table>
 </div>
@@ -95,3 +97,4 @@
 <%@ include file = "footer.jsp" %>
 </body>
 </html>
+	
