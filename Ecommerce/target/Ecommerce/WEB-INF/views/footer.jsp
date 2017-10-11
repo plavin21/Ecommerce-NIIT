@@ -8,7 +8,7 @@
  
 <title>footer</title>
 <style >
-  .footer { text-align: center; bottom: 0;background-color:#222; color:#eee; padding: 28px 8px 18px; margin-top: 130px;}
+  .footer { text-align: center; bottom: 0;background-color:#222; color:#eee; padding: 28px 8px 18px; margin-top: 220px;}
 .footer a{color:#bbb; font-size:12px;}
   </style>
 </head>

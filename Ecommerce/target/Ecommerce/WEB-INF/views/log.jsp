@@ -83,9 +83,9 @@ input {
 <div class="container">  
 <div class="login">
 	<h1>Login</h1>
-    <form method="post" action=login>
-    	<input type="text" name="u" placeholder="Username" required="required" />
-        <input type="password" name="p" placeholder="Password" required="required" />
+    <form action="j_spring_security_check" method="post">
+    	<input type="text" name="j_username" placeholder="Username" required="required" />
+        <input type="password" name="j_password" placeholder="Password" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large" >Login</button>
       <p class="message" style="color: #fff">Not registered? <a href="sign" style="color:#40ff00">Create an account</a></p>
     </form>

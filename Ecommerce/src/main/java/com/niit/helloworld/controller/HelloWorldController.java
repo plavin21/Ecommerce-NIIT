@@ -148,7 +148,7 @@ public class HelloWorldController{
 	
 	@RequestMapping("/addP")
 	public ModelAndView addpro(@RequestParam("pname") String name,@RequestParam("cat") int cat,@RequestParam("supp") int supp,
-			@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file ) {
+			@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file,@RequestParam("desc") String desc ) {
 		System.out.println("in controller");
 		System.out.println(name+cat+supp+price+stock);
 		Product p=new Product();
@@ -158,7 +158,9 @@ public class HelloWorldController{
 		
 		p.setPrice(price);
 		p.setStock(stock);
+		
 		 p.setImg(img);
+		 p.setDesc(desc);
 		Category ll=new Category();
 		ll=cdao.getcatbyid(cat);
 	    int cati=ll.getC_id();
@@ -183,7 +185,7 @@ public class HelloWorldController{
 	    
 	    /* String filepath = request.getSession().getServletContext().getRealPath("/") + "resources/product/" + file.getOriginalFilename();
 		*/
-	    String filepath ="C:/Users/USER/workspace/Ecommerce/src/main/webapp/resources/img" + file.getOriginalFilename();
+	    String filepath ="C:/Users/USER/workspace/Ecommerce/src/main/webapp/resources/img/" + file.getOriginalFilename();
 		
 		System.out.println(filepath);
 		try {
@@ -230,7 +232,7 @@ public class HelloWorldController{
 	}
 	
 	
-	@RequestMapping("/login")
+	@RequestMapping("/register")
 	public ModelAndView adduser(@RequestParam("email") String mail,@RequestParam("mobile") int no,@RequestParam("name") String name,@RequestParam("address")
 	String addr,@RequestParam("password") String pass) {
 		System.out.println("in controller");
@@ -238,11 +240,12 @@ public class HelloWorldController{
 		
 		User u=new User();
 	
-		u.setMail(mail);
-		u.setNumber(no);
-		u.setUsername(name);
+		u.setEmail(mail);
+		u.setMobno(no);
+		u.setName(name);
 		u.setAddress(addr);
 		u.setPassword(pass);
+		u.setRole("USER");
 		
 		
 		
@@ -346,10 +349,11 @@ ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
 	
 	
 	
-	@RequestMapping("/admin")
+	@RequestMapping("/adedit")
 	public ModelAndView admin(){
 		
-		ModelAndView mv1 = new ModelAndView("admin");
+		System.out.println("myke");
+		ModelAndView mv1 = new ModelAndView("adedit");
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
 				
@@ -374,7 +378,7 @@ ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
 		ArrayList<Product> ll=(ArrayList<Product>)pdao.getProdBycatId(catego);
 		
 		
-		mv1.addObject("productlist",ll);
+		mv1.addObject("productli",ll);
 		
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
