@@ -191,7 +191,7 @@ select.classic:focus {
     	<input type="text" name="price" placeholder="Price" required="required" />
     	<input type="text" name="stock" placeholder="stock" required="required" />
     	<input type="file" name="img" placeholder="browse" required="required" />
-    	<input type="text" name="desc" placeholder="Description" required="required" />
+    	<!-- <input type="text" name="desc" placeholder="Description" required="required" /> -->
        <button type="submit" class="btn btn-primary btn-block btn-large" >Add</button>
       
       

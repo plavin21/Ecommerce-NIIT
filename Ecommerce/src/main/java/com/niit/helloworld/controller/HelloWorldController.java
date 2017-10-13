@@ -15,6 +15,7 @@ import javax.sound.midi.SysexMessage;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,10 +26,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.EcommerceBackEnd.DAO.ProductDAO;
+import com.niit.EcommerceBackEnd.DAO.cartDAO;
 import com.niit.EcommerceBackEnd.DAO.categoryDAO;
 import com.niit.EcommerceBackEnd.DAO.supplierDAO;
 import com.niit.EcommerceBackEnd.DAO.userDAO;
 import com.niit.EcommerceBackEnd.DAOIMPL.categoryDAOImpl;
+import com.niit.EcommerceBackEnd.models.Cart;
 import com.niit.EcommerceBackEnd.models.Category;
 import com.niit.EcommerceBackEnd.models.Product;
 import com.niit.EcommerceBackEnd.models.Supplier;
@@ -48,6 +51,9 @@ public class HelloWorldController{
 	
 	@Autowired
 	ProductDAO pdao;
+	
+	@Autowired
+	cartDAO cardao;
 	
 	String message ="Welcome to Spring MVC!";
 	 
@@ -120,7 +126,7 @@ public class HelloWorldController{
 		return mv1;
 	}
 	
-	@RequestMapping("/adding")
+	@RequestMapping("/admin/adding")
 	public ModelAndView adding() {
 		System.out.println("in controller");
 		ModelAndView mv1 = new ModelAndView("adding");
@@ -148,7 +154,7 @@ public class HelloWorldController{
 	
 	@RequestMapping("/addP")
 	public ModelAndView addpro(@RequestParam("pname") String name,@RequestParam("cat") int cat,@RequestParam("supp") int supp,
-			@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file,@RequestParam("desc") String desc ) {
+			@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file/*,@RequestParam("desc") String desc*/ ) {
 		System.out.println("in controller");
 		System.out.println(name+cat+supp+price+stock);
 		Product p=new Product();
@@ -160,7 +166,7 @@ public class HelloWorldController{
 		p.setStock(stock);
 		
 		 p.setImg(img);
-		 p.setDesc(desc);
+		/* p.setDesc(desc);*/
 		Category ll=new Category();
 		ll=cdao.getcatbyid(cat);
 	    int cati=ll.getC_id();
@@ -268,10 +274,21 @@ public class HelloWorldController{
 	public ModelAndView cart(){
 		
 		ModelAndView mv1 = new ModelAndView("cart");
+		
+		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 		
 				
 				mv1.addObject("catego",l);
+				String Username=SecurityContextHolder.getContext().getAuthentication().getName();
+				
+				ArrayList<Cart> ll=(ArrayList<Cart>)cardao.getcartByuserId(Username);
+				
+				
+				
+				
+
+				mv1.addObject("cartlis",ll);
 				return mv1;
 		
 	}
@@ -349,7 +366,7 @@ ArrayList<Supplier> ll=(ArrayList<Supplier>)sdao.getallsuppliers();
 	
 	
 	
-	@RequestMapping("/adedit")
+	@RequestMapping("/admin/adedit")
 	public ModelAndView admin(){
 		
 		System.out.println("myke");
@@ -654,5 +671,41 @@ ArrayList<Category> ll=(ArrayList<Category>)cdao.getallcategories();
 	} 
 	
 	
+	@RequestMapping("/catr")
+	public ModelAndView catr(@RequestParam("id") int id ){
+		
+		ModelAndView mv1 = new ModelAndView("product");
+		Cart c=new Cart();
+		Product ll=new Product();
+		ll=pdao.getProductById(id);
+		int pid=ll.getId();
+		String pname=ll.getName();
+		String pimg=ll.getImg();
+		int price=ll.getPrice();
+		
+		Product pp=new Product();
+		pp.setId(pid);
+		pp.setName(pname);
+		pp.setImg(pimg);
+		pp.setPrice(price);
+		
+		c.setProduct(pp);
+		
+		
+		c.setQuantity(1);
+		c.setPrice(price);
+	
+		String Username=SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		c.setEmail(Username);
+		cardao.savetocart(c);
+	
+
+		
+		
+		
+		
+		return mv1;
+	}
 	
 }

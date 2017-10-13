@@ -81,7 +81,7 @@ input {
   	<h1>Signup </h1>
   <form method="post" action="register" >    
   	
-   		<input type=email name="email" placeholder="Email ID" required="required" />
+   		<input type=text name="email" placeholder="Email ID" required="required" />
    		<input type=text name="mobile" placeholder="Phone NO" required="required" />
         <input type=text name="name" placeholder="UserName" required="required" />
          <input type=text name="address" placeholder="Address" required="required" />

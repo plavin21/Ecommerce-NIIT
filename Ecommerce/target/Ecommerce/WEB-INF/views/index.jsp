@@ -71,6 +71,7 @@ panel-heading{
     </a>
   </div>
 </div>
+ <c:if test="${pageContext.request.userPrincipal.name  != 'lovely@gmail.com'}">
 
 <div class="container">  
 <h2 style="color:#fff">Choose Your Sport</h2><br>  
@@ -92,6 +93,7 @@ panel-heading{
   </div>
  
   </div> 
+  </c:if>
 
 <%@ include file = "footer.jsp" %>
 </body>

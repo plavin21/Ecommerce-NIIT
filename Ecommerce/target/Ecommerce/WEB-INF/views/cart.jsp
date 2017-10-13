@@ -66,23 +66,28 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="design" items="${cartlis}">
 						<tr>
+						
 							<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-2 "><img src="img/3.jpg" alt="Chania" width="100" height="100" class="img-responsive"/></div>
+								
+									<div class="col-sm-2 "><img src="resources/img/Herrera-Man-United-Jersey-Gallery.jpg" alt="Chania" width="100" height="100" class="img-responsive"/></div>
 									<div class="col-sm-10">
+									 
 										<h4 class="nomargin">MAN UTD JERSEY</h4>
 										<p>paul pogba man utd t shirt NO 6
 										</p>	</div>
 								</div>
 							</td>
-							<td data-th="Price">$29.99</td>
+							<td data-th="Price">${design.price }</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1">
+								<input type="number" class="form-control text-center" value="${design.quantity }">
 							</td>
-							<td data-th="Subtotal" class="text-center">29.99</td>
+							<td data-th="Subtotal" class="text-center">${design.price }</td>
 							
 						</tr>
+						</c:forEach>
 					</tbody>
 					<tfoot>
 						<tr class="visible-xs">

@@ -41,11 +41,11 @@
           
         
        
-        <li><a href="#">Today's offer</a></li>
+       
            
               <c:if test="${pageContext.request.userPrincipal.name  == 'lovely@gmail.com'}">
              
-               <li><a href="adedit">Admin</a></li>           
+               <li><a href="admin/adedit">Admin</a></li>           
                
             </c:if> 
             
@@ -73,7 +73,7 @@
             </li>  
              <li>  
             <c:if test="${pageContext.request.userPrincipal.name  != null}">
-					<li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
+					<li ><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
 					<li><a href='<c:url value="/j_spring_security_logout" />'>Logout</a></li>
 				</c:if>
             </li>  
