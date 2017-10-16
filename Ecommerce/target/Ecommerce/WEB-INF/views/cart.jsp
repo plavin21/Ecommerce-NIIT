@@ -62,6 +62,7 @@
 							<th style="width:10%">Price</th>
 							<th style="width:8%">Quantity</th>
 							<th style="width:22%" class="text-center">Subtotal</th>
+							<th style="width:10%">Delete</th>
 							
 						</tr>
 					</thead>
@@ -72,26 +73,29 @@
 							<td data-th="Product">
 								<div class="row">
 								
-									<div class="col-sm-2 "><img src="resources/img/Herrera-Man-United-Jersey-Gallery.jpg" alt="Chania" width="100" height="100" class="img-responsive"/></div>
+									<div class="col-sm-2 "><img src="resources/img/${design.product.img }" alt="Chania" width="100" height="100" class="img-responsive"/></div>
 									<div class="col-sm-10">
 									 
-										<h4 class="nomargin">MAN UTD JERSEY</h4>
+										<h4 class="nomargin">${design.product.name }</h4>
 										<p>paul pogba man utd t shirt NO 6
 										</p>	</div>
 								</div>
 							</td>
 							<td data-th="Price">${design.price }</td>
-							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="${design.quantity }">
+							<td data-th="Quantity" class="text-center">
+								${design.quantity }
 							</td>
 							<td data-th="Subtotal" class="text-center">${design.price }</td>
-							
+							<td data-th="Delete"><a href="delcart?id=${design.carid}" class="btn btn-info btn-lg">
+          									<span class="glyphicon glyphicon-trash"></span> Trash 
+       						 </a>
 						</tr>
 						</c:forEach>
 					</tbody>
+					<br>
 					<tfoot>
 						<tr class="visible-xs">
-							<td class="text-center"><strong>Total 29.99</strong></td>
+							<td class="text-center"><strong>${design.price }</strong></td>
 						</tr>
 						<tr>
 							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>

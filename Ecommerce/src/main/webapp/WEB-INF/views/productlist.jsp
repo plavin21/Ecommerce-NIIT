@@ -11,8 +11,6 @@
   
 <title>Insert title here</title>
 <style>
-
-.glyphicon { margin-right:5px; }
 .thumbnail
 {
     margin-bottom: 20px;
@@ -69,61 +67,48 @@
 {
     margin: 0 0 11px;
 }
+</style>
 <script>
-
 $(document).ready(function() {
-    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+    $('#list').click(function(){event.preventDefault();$('#products .item').addClass('list-group-item');});
+    $('#grid').click(function(){event.preventDefault();$('#products .item').removeClass('list-group-item');});
 });
 
-</scipt>
+</script>
 
-</style>
 </head>
 <body>
 <%@ include file = "header.jsp" %>
 
 
 <div class="container">
-    <div class="well well-sm">
-        <strong>Category Title</strong>
-        <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
-        </div>
-    </div>
+    
     <div id="products" class="row list-group">
+      <c:forEach var="design" items="${productli}">
         <div class="item  col-xs-4 col-lg-4">
-        
-            <div class="thumbnail"><h1>
-             
-             
-            PRODUCTS
-            </h1>
-                <c:forEach var="design" items="${productli}">
+            <div class="thumbnail">
                 <img class="group list-group-image" src="resources/img/${design.img }" alt="" />
                 <div class="caption">
-                <h4 class="group inner list-group-item-heading">
-                        ${design.name}
-             </h4>
-                   
+                    <h4 class="group inner list-group-item-heading">
+                        ${design.name}</h4>
+                    <p class="group inner list-group-item-text">
+                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
                             <p class="lead">
-                                ${design.price}</p>
+                               ${design.price}</p>
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="prolis?id=${design.id}">like it</a>
+                            <a class="btn btn-success" href="prolis?id=${design.id}">View more</a>
                         </div>
                     </div>
-                 </div>
-                    </c:forEach> 
                 </div>
-                  </div> 
             </div>
         </div>
-       
+      </c:forEach>  
+        </div>
+	</div>	
 
 <%@ include file = "footer.jsp" %>
 </body>

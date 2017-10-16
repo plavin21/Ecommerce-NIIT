@@ -12,24 +12,98 @@
   
  <style>
 
+html, body{
+    width:100%;
+    height:100%;
+    background-color:#0000;
+    }
+.carousel-inner,.carousel,.item,.container,.fill {
+  height:100%;
+  width:100%;
+  background-position:center center;
+  background-size:cover;
+}
+.slide-wrapper{display:inline;}
+.slide-wrapper .container{padding:0px;}
+
+/*------------------------------ vertical bootstrap slider----------------------------*/
+
+.carousel-inner> .item.next ,  .carousel-inner > .item.active.right{ transform: translate3d(0, 100%, 0); -webkit-transform: translate3d(0, 100%, 0); -ms-transform: translate3d(0, 100%, 0); -moz-transform: translate3d(0, 100%, 0); -o-transform: translate3d(0, 100%, 0);  top: 0;}
+.carousel-inner > .item.prev ,.carousel-inner > .item.active.left{ transform: translate3d(0,-100%, 0); -webkit-transform: translate3d(0,-100%, 0);  -moz-transform: translate3d(0,-100%, 0);-ms-transform: translate3d(0,-100%, 0); -o-transform: translate3d(0,-100%, 0); top: 0;}
+.carousel-inner > .item.next.left , .carousel-inner > .item.prev.right , .carousel-inner > .item.active{transform:translate3d(0,0,0); -webkit-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);; -moz-transform:translate3d(0,0,0); -o-transform:translate3d(0,0,0); top:0;}
+
+/*------------------------------- vertical carousel indicators ------------------------------*/
+.carousel-indicators{
+position:absolute;
+top:0;
+bottom:0;
+margin:auto;
+height:20px;
+right:10px; left:auto;
+width:auto;
+}
+.carousel-indicators li{display:block; margin-bottom:5px; border:1px solid #00a199; }
+.carousel-indicators li.active{margin-bottom:5px; background:#00a199;}
+
+
 panel-heading{
   
   color:#000;
   
  }
-  .footer { text-align: center;background-color:#222; color:#eee; padding: 28px 8px 18px; margin-top: 18px;}
-.footer a{color:#bbb; font-size:12px;}
+  
   </style>
+  
+  <script>
+  
+  $(document).ready(function(){
+	// invoke the carousel
+	    $('#myCarousel').carousel({
+	      interval: false
+	    });
+
+	// scroll slides on mouse scroll 
+	$('#myCarousel').bind('mousewheel DOMMouseScroll', function(e){
+
+	        if(e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+	            $(this).carousel('prev');
+				
+	        }
+	        else{
+	            $(this).carousel('next');
+				
+	        }
+	    });
+
+	//scroll slides on swipe for touch enabled devices 
+
+	 	$("#myCarousel").on("touchstart", function(event){
+	 
+	        var yClick = event.originalEvent.touches[0].pageY;
+	    	$(this).one("touchmove", function(event){
+
+	        var yMove = event.originalEvent.touches[0].pageY;
+	        if( Math.floor(yClick - yMove) > 1 ){
+	            $(".carousel").carousel('next');
+	        }
+	        else if( Math.floor(yClick - yMove) < -1 ){
+	            $(".carousel").carousel('prev');
+	        }
+	    });
+	    $(".carousel").on("touchend", function(){
+	            $(this).off("touchmove");
+  
+  </script>
 </head>
 <body>
 <%@ include file = "header.jsp" %>
 <body style=" background-color:#000000">
 
 
+<section class="slide-wrapper">
 <div class="container">
-  <br>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
+<div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -37,6 +111,33 @@ panel-heading{
     </ol>
 
     <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <div class="fill" style=" background-color:#48c3af; background-image:url(resources/img/2.jpg);"></div>
+      </div>
+      <div class="item">
+        <div class="fill" style="background-color:#b33f4a;background-image:url(resources/img/4.jpg);"></div>
+      </div>
+     
+</div>
+</div>
+</div>
+
+
+
+
+<!-- 
+<div class="container">
+  <br>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    Indicators
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      
+    </ol>
+
+    Wrapper for slides
     <div class="carousel-inner" role="listbox">
 
       
@@ -60,7 +161,7 @@ panel-heading{
   
     </div>
 
-    <!-- Left and right controls -->
+    Left and right controls
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -70,10 +171,13 @@ panel-heading{
       <span class="sr-only">Next</span>
     </a>
   </div>
-</div>
+</div> -->
+
+
+
  <c:if test="${pageContext.request.userPrincipal.name  != 'lovely@gmail.com'}">
 
-<div class="container">  
+<div class="container1"  style=" background-color:#000000">  
 <h2 style="color:#fff">Choose Your Sport</h2><br>  
  
   <div class="row">
@@ -94,6 +198,7 @@ panel-heading{
  
   </div> 
   </c:if>
+  </section>
 
 <%@ include file = "footer.jsp" %>
 </body>

@@ -23,6 +23,15 @@ body {
 	
 	
 	}
+table {
+	position:relative ;
+	top: 50%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	margin-top: 20px;
+	color:white;
+
+	}
 input[type=text] {
     width: 100%;
     padding: 12px 20px;

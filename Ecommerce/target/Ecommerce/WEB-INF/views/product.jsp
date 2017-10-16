@@ -3928,7 +3928,7 @@ footer .socials {
                       <span class="btn plus" data-id="2721888517"></span>
                     </div>
                     <div id="AddToCart" quickbeam="add-to-cart">
-                      <span id="AddToCartText">Add to Cart</span>
+                       <a href="catr?id=${produc.id}"><span id="AddToCartText">Add to Cart</span></a>
                     </div>
                   </div>
                 </div>

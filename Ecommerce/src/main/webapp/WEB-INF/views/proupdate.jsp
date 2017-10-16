@@ -24,6 +24,16 @@ body {
 	
 	
 	}
+	
+table {
+	position:relative ;
+	top: 50%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	margin-top: 20px;
+	color:white;
+
+	}
 input[type=text] {
     width: 100%;
     padding: 12px 20px;
@@ -51,7 +61,7 @@ button {
 	height:300px;
 }
 .catupdate h1 { 
-color: #fff;
+color: white;
  letter-spacing:1px; 
  text-align:center;
 }
@@ -65,19 +75,25 @@ input {
 	outline: none;
 	padding: 10px;
 	font-size: 13px;
-	color: #fff;
+	color: white;
 	
 	border-radius: 4px;
 	
 }
-
+select {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #ccc;
+    
+    background-color: #000000;
+}
  </style>
 
 </head>
 <body>
 
 <%@ include file = "header.jsp" %>
-<body style=" background-color:#000000">
+<body >
 
 
 
@@ -89,7 +105,7 @@ input {
 
 <tr><td>PRODUCT  ID</td><td><input type="number"   name="proid"   value="${product.id }" style="opacity: 0.65; cursor: not-allowed;width:100%" ></td></tr>
 <tr><td>PRODUCT NAME</td><td><input type="text"  name="proname" required style="width:100%"  value="${product.name }"></td></tr>
-<tr><td>
+<tr><td>CATEGORY</td><td>
 <select name="cat" class="classic" style="color:#fff; width:100%; overflow:hidden"  >
 
 <option value="desigType">${product.category.c_title }</option>
@@ -105,6 +121,8 @@ input {
 <br>
 <br>
 <br>
+</td></tr>
+<tr><td>SUPPLIER</td><td>
 
         <select name="supp" class="classic" style="color:#fff; width:100%; overflow:hidden"  >
 <option value="desigType"> ${product.supplier.s_name }</option>
@@ -115,7 +133,7 @@ input {
                     </c:forEach> 
 </select>
 
-
+</td></tr>
 
 <tr><td>PRICE</td><td><input type="text"  name="price" required style="width:100%"  value="${product.price }"></td></tr>
 <tr><td>STOCK</td><td><input type="text"  name="stock" required style="width:100%"  value="${product.stock }"></td></tr>
