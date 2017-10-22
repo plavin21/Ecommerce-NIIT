@@ -11,210 +11,62 @@
   
 <title>Insert title here</title>
 <style>
-
-.wrapper {
-	width: 68em;
+.thumbnail
+{
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
 }
 
-
-
-
-// Start here
-
-$title-color: #222;
-$font-color: #777;
-$light-gray: #eee;
-$primary: #E91E63;
-$secondary: #42A5F5;
-
-// product
-$product-box-shadow: 0px 0px 0px 1px $light-gray;
-
-
-
-
-
-* {
-	box-sizing: border-box;
+.item.list-group-item
+{
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
 }
 
-body {
-	color: $font-color;
-	font-family: 'Open Sans', Arial, sans-serif;
+.item.list-group-item .list-group-image
+{
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
 }
 
-
-.product-grid {
-	width: 60em;
-	margin: 2rem auto;
-	// TODO: apply clearfix
-	
-
-	// If want a flexbox grid.
-	&.product-grid--flexbox {
-		.product-grid__wrapper {
-			display: flex;
-			flex-wrap: wrap;
-		}
-		
-		.product-grid__title {
-			height: auto;
-			
-			&:after { display: none; }
-		}
-	}
-	
-
-	&__wrapper {
-		margin-left: -1rem;
-		margin-right: -1rem;
-		//background: #000;
-	}
-	
-	&__product-wrapper {
-		padding: 1rem;
-		float: left;
-		width: 33.33333%;
-	}
-	
-	
-	&__product {
-		padding: 1rem;
-		// width: 33.33333%;
-		// float: left;
-		position: relative;
-		cursor: pointer;
-		background: #fff;
-		//box-shadow: $product-box-shadow;
-		border-radius: 4px;
-		
-		&:hover {
-			box-shadow: $product-box-shadow;
-			z-index: 50;
-			
-			.product-grid__extend {
-				display: block;
-			}
-		}
-	}
-	
-			
-	// product image wrapper
-	&__img-wrapper {
-		width: 100%;
-		text-align: center;
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-		height: 150px;
-	}
-	
-	
-		// product image
-		&__img {
-			max-width: 100%;
-			height: auto;
-			max-height: 100%;
-		}
-	
-	
-	//	product title
-	&__title {
-		margin-top: .875rem;
-		display: block;
-		font-size: 1.125em;
-		color: $title-color;
-		height: 3em;
-		overflow: hidden;
-		position: relative;
-		
-		&:after {
-			content: "";
-			display: block;
-			position: absolute;
-			bottom: 0;
-			right: 0;
-			width: 2.4em;
-			height: 1.5em; // magic number
-			background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
-			//background: red;
-		}
-	}
-	
-	&__price {
-		color: $primary;
-		font-weight: bold;
-		letter-spacing: .4px;
-	}
-	
-	
-	// extend wrapper
-	&__extend-wrapper {
-		position: relative;
-	}
-	
-	// extended elements
-	// show when hover .product-grid__product
-	&__extend {
-		display: none;
-		position: absolute;
-		padding: 0 1rem 1rem 1rem;
-		margin: .4375rem -1rem 0;
-		box-shadow: $product-box-shadow;
-		background: #fff;
-		border-radius: 0 0 4px 4px;
-		
-		&:before {
-			content: "";
-			height: .875rem;
-			width: 100%;
-			position: absolute;
-			top: -.4375rem;
-			left: 0;
-			background: #fff;
-		}
-	}
-	
-	
-	// product description	
-	&__description {
-		font-size: .875em;
-		//margin-top: .875rem;
-		margin-top: .4375rem;
-		margin-bottom: 0;
-	}
-	
-	
-	// buttons
-	&__btn {
-		display: inline-block;
-		font-size: .875em;
-		color: $font-color;
-		background: $light-gray;
-		padding: .5em .625em;
-		margin-top: .875rem;
-		margin-right: .625rem;
-		cursor: pointer;
-		border-radius: 4px;
-		
-		i.fa { margin-right: .3125rem;}
-	}
-	
-	
-	&__add-to-cart {
-		color: #fff;
-		background: $primary;
-		
-		&:hover { background: lighten($primary, 10%); }
-	}
-	
-	&__view {
-		color: $font-color;
-		background: $light-gray;
-		
-		&:hover { background: lighten($light-gray, 10%); }
-	}
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
 }
 
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
+}
 </style>
 
 
@@ -223,35 +75,60 @@ body {
 <%@ include file = "header.jsp" %>
 
 
-<div class="content">
-		<!-- content here -->
-		<div class="product-grid product-grid--flexbox">
-			<div class="product-grid__wrapper">
-				<!-- Product list start here -->
-				 <c:forEach var="design" items="${productli}">
-				<!-- Single product -->
-				<div class="product-grid__product-wrapper">
-					<div class="product-grid__product">
-						<div class="product-grid__img-wrapper">			
-							<img src="resources/img/${design.img }" alt="Img" class="product-grid__img" />
-						</div>
-						<span class="product-grid__title"> ${design.name}</span>
-						<span class="product-grid__price"> ${design.price}</span>
-						<div class="product-grid__extend-wrapper">
-							<div class="product-grid__extend">
-								<p class="product-grid__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis velit itaque odit.</p>
-								<span class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"></i><a href="catr1?id=${produc.id}"> Add to cart</a></span>				
-								<span class="product-grid__btn product-grid__view"><i class="fa fa-eye"></i><a href="prolis?id=${design.id}"> View more </a></span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end Single product -->
-			</c:forEach>
-			</div>
-			</div>
-			</div>
-		
+<div class="container">
+    
+    <div id="products" class="row list-group">
+      <c:forEach var="design" items="${productli}">
+        <div class="item  col-xs-4 col-lg-4">
+            <div class="thumbnail">
+           
+                <img class="group list-group-image" src="resources/img/${design.img }" alt="" />
+                <div class="caption">
+                 <div class="col-md-6">
+                    <h4 class="group inner list-group-item-heading">
+                        ${design.name}</h4>
+                  </div>
+                  
+                  
+                  <div class="col-md-6">
+                        
+                        
+ <div class="row-md-3">
+  <span class="sr-only">Four out of Five Stars</span>
+  <span class="glyphicon glyphicon-star" aria-hidden="true" style="color: #e67e22;"></span>
+  <span class="glyphicon glyphicon-star" aria-hidden="true" style="color: #e67e22;"></span>
+  <span class="glyphicon glyphicon-star" aria-hidden="true" style="color: #e67e22;"></span>
+  <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:#e67e22;"></span>
+  <span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:#e67e22;"></span>
+  
+ </div>
+ 
+</div>
+
+                        
+                   <!--  <p class="group inner list-group-item-text">
+                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p> -->
+                     <div class="row">
+                     <div class="col-md-6">
+                     <br>
+                            <p class="lead">
+                            <i class="fa fa-inr" style="font-size:24px"></i>
+                               ${design.price}</p>
+                        </div>
+                    
+                       
+                        <div class="col-md-6">
+                            <a class="btn btn-success" href="prolis?id=${design.id}">View more</a>
+                        </div>
+                         
+                    </div>
+                </div>
+            </div>
+        </div>
+      </c:forEach>  
+        </div>
+	</div>	
 
 <%@ include file = "footer.jsp" %>
 </body>

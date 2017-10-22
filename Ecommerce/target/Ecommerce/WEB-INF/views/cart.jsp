@@ -85,12 +85,15 @@
 							<td data-th="Quantity" class="text-center">
 								${design.quantity }
 							</td>
-							<td data-th="Subtotal" class="text-center">${design.price }</td>
+							<td data-th="Subtotal" class="text-center">${design.price * design.quantity}</td>
 							<td data-th="Delete"><a href="delcart?id=${design.carid}" class="btn btn-info btn-lg">
           									<span class="glyphicon glyphicon-trash"></span> Trash 
        						 </a>
 						</tr>
 						</c:forEach>
+						
+						
+						
 					</tbody>
 					<br>
 					<tfoot>
@@ -98,10 +101,10 @@
 							<td class="text-center"><strong>${design.price }</strong></td>
 						</tr>
 						<tr>
-							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td><a href="./" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total $29.99</strong></td>
-							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td class="hidden-xs text-center"><strong>Total ${sum }</strong></td>
+							<td><a href="checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				</table>

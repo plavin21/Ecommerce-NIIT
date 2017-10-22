@@ -56,11 +56,16 @@ panel-heading{
   
   <script>
   
+ 
+  /* $('#myCarousel').carousel({
+      interval: 400
+  });
   $(document).ready(function(){
 	// invoke the carousel
-	    $('#myCarousel').carousel({
-	      interval: false
-	    });
+	    
+  $('#myCarousel').carousel({
+      interval: 1200
+  });
 
 	// scroll slides on mouse scroll 
 	$('#myCarousel').bind('mousewheel DOMMouseScroll', function(e){
@@ -92,14 +97,19 @@ panel-heading{
 	    });
 	    $(".carousel").on("touchend", function(){
 	            $(this).off("touchmove");
-  
+   */
+   
+   $(document).ready(function() {
+	    $('.carousel').carousel({
+	      interval: 6000
+	    })
+	  });
+   
   </script>
 </head>
 <body>
 <%@ include file = "header.jsp" %>
 <body style=" background-color:#000000">
-
-
 <section class="slide-wrapper">
 <div class="container">
 <div id="myCarousel" class="carousel slide">
@@ -107,17 +117,25 @@ panel-heading{
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
-      
+      <!--  <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+       -->
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-        <div class="fill" style=" background-color:#48c3af; background-image:url(resources/img/2.jpg);"></div>
+        <div class="fill" style=" background-color:#48c3af; background-image:url(${pageContext.request.contextPath}/resources/img/2.jpg);"></div>
       </div>
       <div class="item">
-        <div class="fill" style="background-color:#b33f4a;background-image:url(resources/img/4.jpg);"></div>
+        <div class="fill" style="background-color:#b33f4a;background-image:url(${pageContext.request.contextPath}/resources/img/4.jpg);"></div>
       </div>
+        <%-- <div class="item">
+        <div class="fill" style="background-color:#b33f4a;background-image:url(${pageContext.request.contextPath}/resources/img/1.jpg);"></div>
+      </div>
+        <div class="item">
+        <div class="fill" style="background-color:#b33f4a;background-image:url(${pageContext.request.contextPath}/resources/img/2.jpg);"></div>
+      </div> --%>
      
 </div>
 </div>

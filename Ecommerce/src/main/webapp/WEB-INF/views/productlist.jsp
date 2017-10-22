@@ -11,6 +11,13 @@
   
 <title>Insert title here</title>
 <style>
+
+.thumbnail img
+{
+
+width: 100%;
+  height: 75vh;
+}
 .thumbnail
 {
     margin-bottom: 20px;
@@ -18,23 +25,27 @@
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
+   
 }
 
 .item.list-group-item
 {
     float: none;
     width: 100%;
-    background-color: #fff;
+    background-color: #222;
     margin-bottom: 10px;
 }
 .item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
 {
-    background: #428bca;
+    background: #222;
 }
 
 .item.list-group-item .list-group-image
 {
     margin-right: 10px;
+    width: 100%;
+    height:50vh;
+    
 }
 .item.list-group-item .thumbnail
 {
@@ -68,13 +79,7 @@
     margin: 0 0 11px;
 }
 </style>
-<script>
-$(document).ready(function() {
-    $('#list').click(function(){event.preventDefault();$('#products .item').addClass('list-group-item');});
-    $('#grid').click(function(){event.preventDefault();$('#products .item').removeClass('list-group-item');});
-});
 
-</script>
 
 </head>
 <body>
@@ -83,25 +88,40 @@ $(document).ready(function() {
 
 <div class="container">
     
-    <div id="products" class="row list-group">
+    <div id="products" class="row list-group" >
       <c:forEach var="design" items="${productli}">
         <div class="item  col-xs-4 col-lg-4">
-            <div class="thumbnail">
+            <div class="thumbnail" style="background-color:#222222; ">
+           
                 <img class="group list-group-image" src="resources/img/${design.img }" alt="" />
-                <div class="caption">
+                
+                <div class="caption" style="color:white;">
+                <div class="row">
+                 <div class="col-md-6">
                     <h4 class="group inner list-group-item-heading">
                         ${design.name}</h4>
-                    <p class="group inner list-group-item-text">
-                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                    <div class="row">
-                        <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                               ${design.price}</p>
+                          
                         </div>
-                        <div class="col-xs-12 col-md-6">
-                            <a class="btn btn-success" href="prolis?id=${design.id}">View more</a>
+                        
+ <div class="row-md-6">
+           <p class="lead">
+           					&nbsp;
+                            <span>&#8377;</span>
+                              	 ${design.price}</p>  
+ </div>
+
+</div>
+
+                        
+                   
+                     <div class="row">
+                    
+                    
+                       
+                        <div class="col-md-6">
+                            <a class="btn btn-success" href="prolis?id=${design.id}&c_id=${design.category.c_id}">View more</a>
                         </div>
+                         
                     </div>
                 </div>
             </div>

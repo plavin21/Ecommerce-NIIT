@@ -221,7 +221,7 @@ body {
 <div class="breadcrumb">
 	<a class="active">Address</a>
 	<a >Payment</a>
-	<a >Order Confirmation</a>
+	
 	<a >place your order</a>
 </div>
 <br /><br />
@@ -230,11 +230,12 @@ body {
   	<h1>Shipping Address </h1>
   <form method="post" action="checkadd" >    
   	
-   		<input type=text name="name" placeholder="NAME" required="required" />
-   		<input type=number name="mobile" placeholder="PHONE NO" required="required" />
-        <input type=text name="address" placeholder="ADDRESS" required="required" />
-         <input type=text name="mail" placeholder="MAIL ID" required="required" />
-         <input type=number name="zip" placeholder="ZIP" required="required" />
+   		<input type=text name="name" placeholder="NAME" />
+   		<input type=number name="mobile" placeholder="PHONE NO" />
+        <input type=text name="address" placeholder="ADDRESS" />
+         
+         <input type=text name="state" placeholder="STATE" />
+         <input type=number name="zip" placeholder="ZIP" />
           
 
        

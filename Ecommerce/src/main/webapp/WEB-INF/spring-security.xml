@@ -13,13 +13,18 @@
     access="hasRole('ROLE_ADMIN')" />
     <security:intercept-url pattern="/login"
      access="permitAll" />
-  <!--   <security:intercept-url pattern="/user/**"
-     access="hasRole('ROLE USER')" /> -->
+    <!-- <security:intercept-url pattern="/user/**"
+     access="hasRole('ROLE_USER')" />
+     <security:intercept-url pattern="/login"
+     access="permitAll" /> -->
+     
+     
+     
 		<security:form-login 
 		    login-processing-url="/j_spring_security_check"
 			password-parameter="j_password"
 			 username-parameter="j_username"
-			 authentication-failure-url="/error" 
+			 authentication-failure-url="/invalid" 
 			default-target-url="/"
 			login-page="/log" />
 			
@@ -28,7 +33,7 @@
 		     logout-url="/j_spring_security_logout"
 			logout-success-url="/" />
             <security:access-denied-handler
-                     error-page="/error" />
+                     error-page="/Auth" />
 		<!-- enable csrf protection -->
 		<security:csrf disabled="true" />
 	</security:http>

@@ -9,21 +9,42 @@
 
  
 <title>Insert title here</title>
+<style>
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {float:none;}
+</style>
 
 
 </head>
 <body>
 <body style=" background-color:#000000">
+
+
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="color">
+   	
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
     
-      <a class="navbar-brand" href="#"  onMouseOver="this.style.color='#ffff4d'"
-   onMouseOut="this.style.color='#ffffb3'">SPORTZ ARENA</a>
-    </div>
+   
+      
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li ><a href="./">Home</a></li> 
+        <li ><a class="navbar-brand" href="./"  onMouseOver="this.style.color='#ffff4d'"
+   onMouseOut="this.style.color='#ffffb3'" >SPORTZ ARENA</a>
+  
+  </li> 
+    
        
          
            <c:if test="${pageContext.request.userPrincipal.name  != 'lovely@gmail.com'}">
@@ -49,20 +70,10 @@
                
             </c:if> 
             
-           <%--   <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">
-            <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category List
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-        <c:forEach var="c" items="${catego}" >
-          <li><a href="categoryProductlist?id=<c:out value='${c.c_id}'/>"><c:out value="${c.c_title}"/></a></li>
-       </c:forEach>
-          </ul>
-          </li>
-          </c:if> --%>
+          
            <c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name  != 'lovely@gmail.com'}">
             <li>       
-            <a href="cart">My Cart<i class="fa fa-shopping-cart" ></i></a> 
+            <a href="cart"><span class="glyphicon">&#xe116;</span>My Cart<i class="fa fa-shopping-cart" ></i></a> 
             </li> 
             </c:if> 
             
@@ -91,7 +102,7 @@
   </div>
 </form>
 </div>
-    
+
   </div>
 </nav> 
   
