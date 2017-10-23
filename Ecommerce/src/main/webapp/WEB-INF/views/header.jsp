@@ -66,7 +66,7 @@
            
               <c:if test="${pageContext.request.userPrincipal.name  == 'lovely@gmail.com'}">
              
-               <li><a href="admin/adedit">Admin</a></li>           
+               <li><a href="adedit">Admin</a></li>           
                
             </c:if> 
             

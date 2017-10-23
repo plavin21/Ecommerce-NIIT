@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.niit.EcommerceBackEnd.DAO.ProductDAO;
 import com.niit.EcommerceBackEnd.DAO.cartDAO;
@@ -57,46 +58,7 @@ public class admin {
 			return mv1;
 		}
 		
-		
-		@RequestMapping("/admin/addC")
-		public ModelAndView addcat(@RequestParam("cname") String name) {
-			System.out.println("in controller");
-			System.out.println(name);
-			Category c=new Category();
-		
-			c.setC_title(name);
-			
-			cdao.saveProduct(c);
-			
-			ModelAndView mv1 = new ModelAndView("adding");
-			
-			
-		
-			return mv1;
-		}
-		
-		
-		@RequestMapping("/admin/addS")
-		public ModelAndView addsup(@RequestParam("sname") String name/*,@RequestParam("sno") int no*/) {
-			System.out.println("in controller");
-			System.out.println(name);
-			
-			Supplier s=new Supplier();
-		
-			s.setS_name(name);
-			/*s.setS_no(no);*/
-			
-			
-			
-			sdao.saveSupplier(s);
-			
-			ModelAndView mv1 = new ModelAndView("adding");
-			
-			
-		
-			return mv1;
-		}
-		
+
 		@RequestMapping("/admin/adding")
 		public ModelAndView adding() {
 			System.out.println("in controller");
@@ -121,6 +83,98 @@ public class admin {
 			
 			return mv1;
 		}
+		
+		
+		@RequestMapping("/addC")
+		public ModelAndView addC(@RequestParam("cname") String name,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			
+			redirectAttributes.addAttribute("cname", "name");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/addC");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
+		@RequestMapping("/admin/addC")
+		public ModelAndView addcat(@RequestParam("cname") String name) {
+			System.out.println("in controller");
+			System.out.println(name);
+			Category c=new Category();
+		
+			c.setC_title(name);
+			
+			cdao.saveProduct(c);
+			
+			ModelAndView mv1 = new ModelAndView("adding");
+			
+			
+		
+			return mv1;
+		}
+		
+		@RequestMapping("/addS")
+		public ModelAndView addS(@RequestParam("sname") String name,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("sname", "name");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/addS");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
+		@RequestMapping("/admin/addS")
+		public ModelAndView addsup(@RequestParam("sname") String name/*,@RequestParam("sno") int no*/) {
+			System.out.println("in controller");
+			System.out.println(name);
+			
+			Supplier s=new Supplier();
+		
+			s.setS_name(name);
+			/*s.setS_no(no);*/
+			
+			
+			
+			sdao.saveSupplier(s);
+			
+			ModelAndView mv1 = new ModelAndView("adding");
+			
+			
+		
+			return mv1;
+		}
+		
+		
+		@RequestMapping("/addP")
+		public ModelAndView addP(@RequestParam("pname") String name,@RequestParam("cat") int cat,@RequestParam("supp") int supp,
+				@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file,RedirectAttributes redirectAttributes/*,@RequestParam("desc") String desc*/ ) 
+		{
+
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("pname", "name");
+			redirectAttributes.addAttribute("cat", "cat");
+			redirectAttributes.addAttribute("supp", "supp");
+			redirectAttributes.addAttribute("price", "price");
+			redirectAttributes.addAttribute("stock", "stock");
+			redirectAttributes.addAttribute("img", "img");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/addP");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
 		
 		
 		@RequestMapping("/admin/addP")
@@ -207,6 +261,22 @@ public class admin {
 		
 			return mv1;
 		}
+		
+		
+		@RequestMapping("/options")
+		public ModelAndView option(){
+			
+			System.out.println("myke");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/options");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
+		
 
 		@RequestMapping("/admin/options")
 		public ModelAndView options(){
@@ -219,6 +289,20 @@ public class admin {
 			
 		}
 		
+		@RequestMapping("/updating")
+		public ModelAndView updateP(){
+			
+			System.out.println("myke");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/updating");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
+		
 		@RequestMapping("/admin/updating")
 		public ModelAndView updating(){
 			ModelAndView mv1 = new ModelAndView("updating");
@@ -230,6 +314,19 @@ public class admin {
 			
 			
 			
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
+		@RequestMapping("/updatingc")
+		public ModelAndView updateC(){
+			
+			System.out.println("myke");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/updatingc");
 			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 			
 					
@@ -251,6 +348,19 @@ public class admin {
 			
 			
 			
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
+		@RequestMapping("/updatings")
+		public ModelAndView updateS(){
+			
+			System.out.println("myke");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/updatings");
 			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 			
 					
@@ -306,7 +416,19 @@ public class admin {
 			
 		}
 		
-		
+		@RequestMapping("/catdel")
+		public ModelAndView delcat(@RequestParam ("id") int catego,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("id", "catego");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/catdel");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
 		
 		@RequestMapping("/admin/catdel")
 		public ModelAndView categorylist(@RequestParam ("id") int catego){
@@ -323,6 +445,20 @@ public class admin {
 			
 			
 				return mv1;
+			
+		}
+		
+		@RequestMapping("/catupd")
+		public ModelAndView updcate(@RequestParam ("id") int catego,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("id", "catego");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/catupd");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
 			
 		}
 		
@@ -343,6 +479,22 @@ public class admin {
 				return mv1;
 			
 		} 
+		
+		@RequestMapping("/updatecategory")
+		public ModelAndView updatecat(@RequestParam("catid") int id ,@RequestParam("catname") String name,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("catid", "id");
+			redirectAttributes.addAttribute("catname", "name");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/updatecategory");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
 		@RequestMapping("/admin/updatecategory")
 		public ModelAndView updatecategory(@RequestParam("catid") int id ,@RequestParam("catname") String name) {
 		System.out.println("in controller");
@@ -373,6 +525,22 @@ public class admin {
 		} 
 		
 		
+		@RequestMapping("/supdel")
+		public ModelAndView delsup(@RequestParam ("id") int supp,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("id", "supp");
+			
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/supdel");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
+		
 		
 		@RequestMapping("/admin/supdel")
 		public ModelAndView supplierlist(@RequestParam ("id") int supp){
@@ -391,6 +559,21 @@ public class admin {
 				return mv1;
 			
 		} 
+		
+		@RequestMapping("/supupd")
+		public ModelAndView updcat(@RequestParam ("id") int sup,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("id", "sup");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/supupd");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
 		@RequestMapping("/admin/supupd")
 		public ModelAndView supupd(@RequestParam ("id") int sup){
 			ModelAndView mv1 = new ModelAndView("supupdate");
@@ -410,6 +593,20 @@ public class admin {
 			
 		} 
 		
+		@RequestMapping("/updatesupplier")
+		public ModelAndView updatesup(@RequestParam("supid") int id ,@RequestParam("supname") String name,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("supid", "id");
+			redirectAttributes.addAttribute("supname", "name");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/updatesupplier");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
 		
 		@RequestMapping("/admin/updatesupplier")
 		public ModelAndView updatesupplier(@RequestParam("supid") int id ,@RequestParam("supname") String name) {
@@ -439,6 +636,20 @@ public class admin {
 			
 		} 
 		
+		@RequestMapping("/prodel")
+		public ModelAndView delpro(@RequestParam ("id") int productId,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("id", "productId");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/prodel");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
+		
 		
 		@RequestMapping("/admin/prodel")
 		public ModelAndView produlist(@RequestParam ("id") int productId){
@@ -455,6 +666,20 @@ public class admin {
 			
 			
 				return mv1;
+			
+		}
+		
+		@RequestMapping("/proupd")
+		public ModelAndView updpro(@RequestParam ("id") int pro,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("id", "pro");
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/proupd");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
 			
 		}
 		
@@ -492,7 +717,29 @@ public class admin {
 			
 				return mv1;
 			
-		} 
+		}
+		
+		@RequestMapping("/updateproduct")
+		public ModelAndView updatepro(@RequestParam("proid") int id ,@RequestParam("proname") String name,@RequestParam("cat") int cat,
+				@RequestParam("supp") int supp,
+				@RequestParam("price") int price,@RequestParam("stock") int stock,RedirectAttributes redirectAttributes){
+			
+			System.out.println("myke");
+			redirectAttributes.addAttribute("proid", "id");
+			redirectAttributes.addAttribute("proname", "name");
+			redirectAttributes.addAttribute("cat", "cat");
+			redirectAttributes.addAttribute("supp", "supp");
+			redirectAttributes.addAttribute("price", "price");
+			redirectAttributes.addAttribute("stock", "stock");
+			
+			ModelAndView mv1 = new ModelAndView("redirect:/admin/updateproduct");
+			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+			
+					
+					mv1.addObject("catego",l);
+					return mv1;
+			
+		}
 		
 		
 		@RequestMapping("/admin/updateproduct")

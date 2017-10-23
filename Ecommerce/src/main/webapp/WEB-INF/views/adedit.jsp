@@ -22,14 +22,16 @@
     <div class="col-sm-6" style="text-align:center">
       
         <h3 style="color:white; text-align:center">ADD</h3>
-        <a href="adding"><img src="${pageContext.request.contextPath}/resources/img/addmy.png" class="img-responsive" width=75%  alt="Image"></a>
+        <a href="adding"><img src="${pageContext.request.contextPath}/resources/img/addmy.png" class="img-responsive" style="width=75%; height=500vh;display: block;
+    margin-left: auto;margin-right: auto;"  alt="Image"></a>
         
       </div>
     
-    <div class="col-sm-6"> 
+    <div class="col-sm-6" style="text-align:center"> 
     
         <h3 style="color:white;">UPDATE</h3>
-        <a href="options"><img src="${pageContext.request.contextPath}/resources/img/images.png" class="img-responsive" width=75%  alt="Image"></a>
+        <a href="options"><img src="${pageContext.request.contextPath}/resources/img/images.png" class="img-responsive" style="width=75%; height=500vh;display: block;
+    margin-left: auto;margin-right: auto;"  alt="Image"></a>
         
       </div>
     </div>

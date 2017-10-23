@@ -50,7 +50,7 @@ html, body{
       
 
    <div class="item active">
-        <img src="resources/img/2.jpg" class= alt="Chania" style="width:100%; height:600 px;">
+        <img src="${pageContext.request.contextPath}/resources/img/2.jpg" class= alt="Chania" style="width:100%; height:600 px;">
         <div class="carousel-caption">
           <h3>Jersey cr7</h3>
           <p>CRISTIANO RONALDO UNIVERSAL SUPERSTAR</p>
@@ -59,7 +59,7 @@ html, body{
     
     
       <div class="item">
-        <img src="resources/img/4.jpg" alt="Flower" style="width:100%; height:600 px;">
+        <img src="${pageContext.request.contextPath}/resources/img/4.jpg" alt="Flower" style="width:100%; height:600 px;">
         <div class="carousel-caption">
           <h3>IBRA</h3>
           <p>THE INCREDIBLE ZLATAN </p>
