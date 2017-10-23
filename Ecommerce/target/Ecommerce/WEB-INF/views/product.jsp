@@ -6,12 +6,17 @@
 <head>
 <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+
 <title>Insert title here</title>
 <style>
+
+
+
+
+
+
+
 
 html, body{
     color:white;
@@ -75,6 +80,7 @@ jQuery(document).ready(function(){
         }
     });
 });
+
 
 </script>
 
@@ -157,7 +163,7 @@ jQuery(document).ready(function(){
  </c:if>
 <div class="row">
  <div class="col-md-4 text-center">
-  <span class="monospaced">In Stock</span>
+  <span class="monospaced">${produc.stock } <br> left </span>
  </div>
  
 </div><!-- end row -->
@@ -176,6 +182,44 @@ jQuery(document).ready(function(){
    </div>
     </div><!-- end row -->
  </div><!-- end container -->
+ 
+ <br>
+ <h2>YOU MAY LIKE THESE</h2>
+   <div class="row">
+
+                    <div id="carousel-content" class="carousel slide" data-ride="carousel">
+                     
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner">
+                        <div class="item active">
+                        		 <c:forEach var="design" items="${productli}">
+                        		 	<c:if test="${design.id != produc.id}">
+                                        <!-- SINGLE SERVICE -->
+                                        <div class="col-md-4 col-sm-6 col-xs-12" data-wow-offset="10" data-wow-duration="1.5s" style="visibility: visible;
+                                         -webkit-animation-duration: 1.5s;">
+                                           <a href="prolis?id=${design.id}&c_id=${design.category.c_id}"><img src="resources/img/${design.img }" 
+                                           class="img-responsive" style=" width: 100%; height: 50vh;"></a>
+                                        </div>
+                                        <!-- /END SINGLE SERVICE -->
+                                        </c:if>
+                                 </c:forEach>
+                         </div>
+                                        
+                      </div>
+
+                      
+                    </div>
+
+            </div>
+            
+
+      <!--scripts loaded here-->
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+
 
 <%@ include file = "footer.jsp" %>
 </body>

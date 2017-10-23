@@ -47,7 +47,7 @@
     
        
          
-           <c:if test="${pageContext.request.userPrincipal.name  != 'lovely@gmail.com'}">
+           <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">
              <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop by category <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -64,14 +64,14 @@
        
        
            
-              <c:if test="${pageContext.request.userPrincipal.name  == 'lovely@gmail.com'}">
+              <c:if test="${pageContext.request.userPrincipal.name  == 'admin123@gmail.com'}">
              
                <li><a href="adedit">Admin</a></li>           
                
             </c:if> 
             
           
-           <c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name  != 'lovely@gmail.com'}">
+           <c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">
             <li>       
             <a href="cart"><span class="glyphicon">&#xe116;</span>My Cart<i class="fa fa-shopping-cart" ></i></a> 
             </li> 

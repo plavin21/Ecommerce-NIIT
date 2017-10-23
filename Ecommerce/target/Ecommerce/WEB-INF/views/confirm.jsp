@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,12 +53,32 @@ button {
 
 * {margin: 0; padding: 0;}
 
+.invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
 
+.table > tbody {
+
+color:#000000
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
 
 body {
 	text-align: center;
 	
 	background: #000000;
+	color: #ffffff
 	
 }
 
@@ -157,28 +178,6 @@ body {
 	font-weight: bold;
 }
 
-
-/* .flat a, .flat a:after {
-	background: white;
-	color: black;
-	transition: all 0.5s;
-}
-.flat a:before {
-	background: white;
-	box-shadow: 0 0 0 1px #ccc;
-}
-.flat a:hover, .flat a.active, 
-.flat a:hover:after, .flat a.active:after{
-	background: #9EEB62;
-}
- */
-
-
-
-
-
-
-
   /* Arrow styles */
   &:after {
     content: '';
@@ -221,7 +220,8 @@ body {
 <%@ include file = "header.jsp" %>
 <!-- 
  -->
- 
+
+
 <!-- a simple div with some links -->
 <div class="breadcrumb">
 	<a >Address</a>
@@ -230,28 +230,107 @@ body {
 	<a class="active">place your order</a>
 </div>
 <br /><br />
-<div class="container">  
-<div class="check">
-  	<h1>The Product Will Be Shipped To, </h1>
-  <form method="post" action="checkord" >    
-  	
-   		<input type=text name="name" placeholder=${orders.name } readonly/>
-   		<input type=number name="mobile" placeholder=${orders.mobno } readonly />
-        <input type=text name="address" placeholder=${orders.address } readonly />
-         <input type=text name="mail" placeholder=${orders.email }  readonly/>
-         <input type=text name="state" placeholder=${orders.state } readonly/>
-         <input type=number name="zip" placeholder=${orders.zip } readonly/>
-          
-
-     <!--  <a class="btn" href="edconfirm">EDIT</a>  -->
-     <button type="submit" class="btn btn-primary btn-block btn-large"  >PLACE YOUR ORDER</button>
-      
-      
-    
-  </form>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice-title">
+    			<h2 style="text-align:center" >Invoice</h2><h3 class="pull-right">Order # 12345</h3>
+    		</div>
+    		<hr>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    				<strong>Billed To:</strong><br>
+    				<c:forEach var="design" items="${orders}">
+    					${design.name } <br>
+    					${design.mobno } <br>
+       					 ${design.address } <br>
+      				   ${design.email }  <br>
+       				   ${design.state } <br>
+       				 ${design.zip } 
+       				 
+    				</address>
+    			</div>
+    			<div class="col-xs-6">
+    				<address>
+    					<strong>Payment Method:</strong><br>
+    					Visa ending **** 4242<br>
+    					${design.email } 
+    				</address>
+    			</div>
+    			</c:forEach>
+    		</div>
+    				
+    		<div class="row">
+    			
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong>Order Date:</strong><br>
+    					March 7, 2014<br><br>
+    				</address>
+    			</div>
+    		</div>
+    	</div>
     </div>
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong>Order summary</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr>
+        							<td><strong>Item</strong></td>
+        							<td class="text-center"><strong>Price</strong></td>
+        							<td class="text-center"><strong>Quantity</strong></td>
+        							<td class="text-right"><strong>Totals</strong></td>
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<c:forEach var="design" items="${cartlis}"><!-- foreach ($order->lineItems as $line) or some such thing here -->
+    							<tr>
+    								<td>${design.product.name }</td>
+    								<td class="text-center">${design.price }</td>
+    								<td class="text-center">${design.quantity }</td>
+    								<td class="text-right">${design.price * design.quantity}</td>
+    							</tr>
+    							</c:forEach>
+                               
+    							<tr>
+    								<td class="thick-line"></td>
+    								<td class="thick-line"></td>
+    								<td class="thick-line text-center"><strong>Subtotal</strong></td>
+    								<td class="thick-line text-right">${sum }</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Shipping</strong></td>
+    								<td class="no-line text-right"> <span>&#8377;</span>100</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Total</strong></td>
+    								<td class="no-line text-right">${sum + 100 }</td>
+    							</tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <c:forEach var="design" items="${orders}">
+     
+    <a href="checkord?id=${design.ordid }" class="btn btn-info" role="button">Place Your Order</a>
+   
+    </c:forEach>
 </div>
-
  
 <%@ include file = "footer.jsp" %>
 </body>

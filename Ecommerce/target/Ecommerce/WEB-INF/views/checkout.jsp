@@ -233,7 +233,7 @@ body {
    		<input type=text name="name" placeholder="NAME" />
    		<input type=number name="mobile" placeholder="PHONE NO" />
         <input type=text name="address" placeholder="ADDRESS" />
-         <input type=text name="mail" placeholder="MAIL ID"  />
+         
          <input type=text name="state" placeholder="STATE" />
          <input type=number name="zip" placeholder="ZIP" />
           

@@ -16,7 +16,7 @@
 {
 
 width: 100%;
-  height: 75vh;
+  height: 50vh;
 }
 .thumbnail
 {

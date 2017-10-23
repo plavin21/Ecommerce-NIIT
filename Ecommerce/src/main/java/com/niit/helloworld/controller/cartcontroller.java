@@ -142,11 +142,16 @@ public class cartcontroller {
 
 				Product lll=new Product();
 				 lll=pdao.getProductById(id);
-				
-				
 				mv1.addObject("produc",lll);	
 				
 				
+				Category c=lll.getCategory();
+				int c_id=c.getC_id();
+				ArrayList<Product> pr=(ArrayList<Product>)pdao.getProdBycatId(c_id);
+				mv1.addObject("productli",pr);
+				
+				ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+				mv1.addObject("catego",l);
 				
 				return mv1;
 			}
@@ -213,6 +218,8 @@ public class cartcontroller {
 				
 				mv1.addObject("cartlis",ll);
 				
+				ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+				mv1.addObject("catego",l);
 				
 				
 				

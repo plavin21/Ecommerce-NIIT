@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
@@ -51,10 +52,20 @@
 <body>
 <%@ include file = "header.jsp" %>
 <body style=" background-color:#000000">
-
+<c:if test="${fn:length(cartlis) eq 0}">
+<div>
+<h2 style="text-align:center;color:#ffffff;">YOUR SHOPPING CART IS EMPTY</h2>
+<div >
+<img src="${pageContext.request.contextPath}/resources/img/cartt.png" alt="Chania" width="100 " height="500 vh" class="img-responsive" style="display: block;
+    margin-left: auto;margin-right: auto;"/>
+</div>
+</div>
+</c:if>
+<c:if test="${fn:length(cartlis) ge 1}">
   
 
 <div class="container">
+
 	<table id="cart"  style="color:#fff" >
     				<thead>
 						<tr>
@@ -109,6 +120,7 @@
 					</tfoot>
 				</table>
 </div>
+</c:if>
 <%@ include file = "footer.jsp" %>
 </body>
 </html>

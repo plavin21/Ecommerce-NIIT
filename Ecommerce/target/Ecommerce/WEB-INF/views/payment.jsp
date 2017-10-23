@@ -242,7 +242,7 @@ body { margin-top:20px;background: black;text-align: center; }
             </div>
             
             <br/>
-            <a href="confirm?id=ordid" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
+            <a href="confirm" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
         </div>
     </div>
     </div>

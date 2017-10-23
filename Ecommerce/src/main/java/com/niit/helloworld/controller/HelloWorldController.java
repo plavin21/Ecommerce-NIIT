@@ -133,15 +133,11 @@ public class HelloWorldController{
 		mv1.addObject("produc",ll);
 		
 		ArrayList<Product> lll=(ArrayList<Product>)pdao.getProdBycatId(catego);
-		
-		
 		mv1.addObject("productli",lll);
 		
 		
 		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-		
-				
-				mv1.addObject("catego",l);
+		mv1.addObject("catego",l);
 				return mv1;
 		
 	} 
@@ -155,7 +151,7 @@ public class HelloWorldController{
 	
 	@RequestMapping("/Auth")
 	public ModelAndView auth(){
-		ModelAndView mv1 = new ModelAndView("error");
+		ModelAndView mv1 = new ModelAndView("error2");
 	return mv1;
 	
 	}

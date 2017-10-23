@@ -12,9 +12,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js">
+        </script>
   
 </head>
 
+<script type="text/javascript">
+
+window.history.forward();
+function noBack() {
+	window.history.forward(); 
+	}
+
+</script>
   
 <style>
 
@@ -216,11 +227,12 @@ body {
 
 </style>
 </head>
-<body>
+<body onload="noBack();"  onpageshow="if (event.persisted) noBack();" onunload="">
+
 <%@ include file = "header.jsp" %>
 <!-- 
  -->
-
+<div class="container">
 
 <!-- a simple div with some links -->
 <div class="breadcrumb">
@@ -230,7 +242,7 @@ body {
 	<a class="active">place your order</a>
 </div>
 <br /><br />
-<div class="container">
+
     <div class="row">
         <div class="col-xs-12">
     		<div class="invoice-title">
@@ -241,13 +253,13 @@ body {
     			<div class="col-xs-6">
     				<address>
     				<strong>Billed To:</strong><br>
-    				<c:forEach var="design" items="${orders}">
-    					${design.name } <br>
-    					${design.mobno } <br>
-       					 ${design.address } <br>
-      				   ${design.email }  <br>
-       				   ${design.state } <br>
-       				 ${design.zip } 
+    				
+    					${orders.name } <br>
+    					${orders.mobno } <br>
+       					 ${orders.address } <br>
+      				   ${orders.email }  <br>
+       				   ${orders.state } <br>
+       				 ${orders.zip } 
        				 
     				</address>
     			</div>
@@ -255,10 +267,10 @@ body {
     				<address>
     					<strong>Payment Method:</strong><br>
     					Visa ending **** 4242<br>
-    					${design.email } 
+    					${orders.email } 
     				</address>
     			</div>
-    			</c:forEach>
+    			
     		</div>
     				
     		<div class="row">
@@ -325,13 +337,14 @@ body {
     		</div>
     	</div>
     </div>
-    <c:forEach var="design" items="${orders}">
+    
      
-    <a href="checkord?id=${design.ordid }" class="btn btn-info" role="button">Place Your Order</a>
+    <a href="checkord" class="btn btn-info" role="button">Place Your Order</a>
    
-    </c:forEach>
+   
 </div>
  
 <%@ include file = "footer.jsp" %>
 </body>
+
 </html>

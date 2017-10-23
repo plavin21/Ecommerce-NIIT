@@ -106,7 +106,8 @@ public class checkoutcontroller {
 					
 
 					String Username=SecurityContextHolder.getContext().getAuthentication().getName();
-			         ArrayList<Orders> lll=(ArrayList<Orders>)odao.getorderByuserId(Username);
+			         Orders lll=(Orders)odao.getorderByuserId(Username);
+			       
 			         mv1.addObject("orders",lll);
 			         
 			         
@@ -144,12 +145,12 @@ public class checkoutcontroller {
 				}
 				
 				@RequestMapping("/checkord")
-				public ModelAndView checkorder(@RequestParam("id") int id){
+				public ModelAndView checkorder(){
 					
 					ModelAndView mv1 = new ModelAndView("thankyou");
 					String name=SecurityContextHolder.getContext().getAuthentication().getName();
 					cardao.deletecartByuserId(name);
-					odao.deletefromorder(id);
+					
 					
 					
 							

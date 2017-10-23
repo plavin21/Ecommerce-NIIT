@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>error</title>
 </head>
-<body background="resources/img/vendhq.png">
+<body background="resources/img/11.jpg">
 <h2><a href="./">BACK TO HOME</a></h2>
 </body>
 </html>
