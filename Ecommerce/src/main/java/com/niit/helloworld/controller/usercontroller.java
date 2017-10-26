@@ -67,7 +67,7 @@ public class usercontroller {
 				
 				
 				@RequestMapping("/register")
-				public ModelAndView adduser(@RequestParam("email") String mail,@RequestParam("mobile") int no,@RequestParam("name") String name,@RequestParam("address")
+				public ModelAndView adduser(@RequestParam("email") String mail,@RequestParam("mobile") long no,@RequestParam("name") String name,@RequestParam("address")
 				String addr,@RequestParam("password") String pass) {
 					System.out.println("in controller");
 					System.out.println(mail+name+addr+pass);

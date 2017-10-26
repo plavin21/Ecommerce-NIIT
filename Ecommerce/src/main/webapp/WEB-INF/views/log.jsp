@@ -82,10 +82,10 @@ input {
 
 <div class="container">  
 <div class="login">
-	  <h3 style="color:white;">${invalid }</h3>
+	  <p style="color:red;">${invalid }</p>
 	<h1>Login</h1>
     <form action="j_spring_security_check" method="post">
-    	<input type="text" name="j_username" placeholder="Username" required="required" />
+    	<input type="text" pattern="[a-z0-9._%+-]+@[a-z]+\.[a-z]{2,3}$"  title="rahul@gmail.com" name="j_username" placeholder="Username" required="required" />
         <input type="password" name="j_password" placeholder="Password" required="required" />
         <button type="submit" class="btn btn-primary btn-block btn-large" >Login</button>
       <p class="message" style="color: #fff">Not registered? <a href="sign" style="color:#40ff00">Create an account</a></p>

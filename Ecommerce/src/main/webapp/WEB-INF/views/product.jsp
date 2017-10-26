@@ -42,7 +42,7 @@ input.qtyminus { width:25px; height:25px;}
 function checkstock() {
     var quantity = document.getElementById("quantity").value;
     var stock = document.getElementById("stock").value;
-    if (quantity > stock) {
+    if (quantity > stock ) {
     	 document.getElementById("error").innerHTML = "This Item Is Limited";
         return false;
     }
@@ -148,14 +148,7 @@ jQuery(document).ready(function(){
  <input name="id" type="hidden" value=${produc.id}>
  
  
-  <c:if test="${produc.stock eq 0}">
-
- <div class="col-md-4">
-   <button class="btn btn-success" type="submit" style="cursor: not-allowed" >
-   Add to Cart
-  </button>
-   </div>
- </c:if>
+ 
  
    <c:if test="${produc.stock ge 1}">
    
@@ -165,13 +158,10 @@ jQuery(document).ready(function(){
    <button class="btn btn-success" type="submit" onclick="return checkstock()" >
    Add to Cart
   </button>
-    <!-- Modal -->
- 
-          <h4 >${modal }</h4>
-       
+  
    
    
-    <p id="error"></p>
+    <p style=color:red; id="error"></p>
     </div>
    </c:if>
   

@@ -205,6 +205,8 @@ public class HelloWorldController{
 	public ModelAndView invalid(){
 		ModelAndView mv1 = new ModelAndView("log");
 		mv1.addObject("invalid","Invalid Username/Password,Please login again");
+		ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		mv1.addObject("catego",l);
 	return mv1;
 	
 	}

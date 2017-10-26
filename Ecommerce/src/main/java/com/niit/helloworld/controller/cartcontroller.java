@@ -109,8 +109,8 @@ public class cartcontroller {
 			@RequestMapping("/user/catr")
 			public ModelAndView catr(@RequestParam("quantity") int quantity,@RequestParam("id") int id ){
 				
-				ModelAndView mv1 = new ModelAndView("product");
-				mv1.addObject("modal","added to cart");
+				
+			
 				String name = SecurityContextHolder.getContext().getAuthentication().getName();
 			    
 				Product p=new Product();
@@ -170,7 +170,21 @@ public class cartcontroller {
 
 				Product lll=new Product();
 				 lll=pdao.getProductById(id);
-				mv1.addObject("produc",lll);	
+				 ModelAndView mv1 = new ModelAndView("cart");
+				mv1.addObject("produc",lll);
+				
+				String username = SecurityContextHolder.getContext().getAuthentication().getName();
+				ArrayList<Cart> ll=(ArrayList<Cart>)cardao.getcartByuserId(username);
+				mv1.addObject("cartlis",ll);
+				int total=0;
+		for (Cart cart : ll) {
+			
+			int sum=cart.getPrice()*cart.getQuantity();
+			total=total+sum;
+		}	   
+		
+		
+				mv1.addObject("sum",total);
 				
 				
 				Category c=lll.getCategory();
