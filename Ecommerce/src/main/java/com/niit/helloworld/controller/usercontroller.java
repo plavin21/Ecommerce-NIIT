@@ -79,7 +79,7 @@ public class usercontroller {
 					u.setName(name);
 					u.setAddress(addr);
 					u.setPassword(pass);
-					u.setRole("USER");
+					u.setRole("ROLE_USER");
 					
 					
 					

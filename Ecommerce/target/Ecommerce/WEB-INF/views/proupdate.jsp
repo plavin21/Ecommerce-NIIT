@@ -98,7 +98,7 @@ select {
 
 
 
-<form action="updateproduct" method="post">
+<form action="updateproduct" method="post" enctype="mutipart/form-data">
 
       <table >
      
@@ -137,6 +137,16 @@ select {
 
 <tr><td>PRICE</td><td><input type="text"  name="price" required style="width:100%"  value="${product.price }"></td></tr>
 <tr><td>STOCK</td><td><input type="text"  name="stock" required style="width:100%"  value="${product.stock }"></td></tr>
+
+
+<tr><td>IMG</td><td >
+								
+<img src="${pageContext.request.contextPath}/resources/img/${product.img }" alt="Chania" width="100" height="100" class="img-responsive"/>
+									
+								
+							</td></tr>
+<tr><td>CHANGE IMG</td><td><input type="file" name="img" placeholder="browse" required="required" /></td></tr>
+   
 
 
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%"></td></tr>

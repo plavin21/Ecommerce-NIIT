@@ -1,33 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <title>Insert title here</title>
 <style>
-
-
-
-
-
-
-
-
 html, body{
     color:white;
     background-color:#0000;
     }
-
+    
+    .thumbnail img
+{
+width: 100%;
+  height: 50vh;
+}
 .add-to-cart .btn-qty {
   width: 52px;
   height: 46px;
 }
-
 .qty {
      color:black;
     width: 40px;
@@ -36,14 +35,19 @@ html, body{
 }
 input.qtyplus { width:25px; height:25px;}
 input.qtyminus { width:25px; height:25px;}
-
 .add-to-cart .btn { border-radius: 0; }
-
-
 </style>
 
 <script>
-
+function checkstock() {
+    var quantity = document.getElementById("quantity").value;
+    var stock = document.getElementById("stock").value;
+    if (quantity > stock) {
+    	 document.getElementById("error").innerHTML = "This Item Is Limited";
+        return false;
+    }
+    return true;
+}
 jQuery(document).ready(function(){
     // This button will increment the value
     $('.qtyplus').click(function(e){
@@ -80,8 +84,6 @@ jQuery(document).ready(function(){
         }
     });
 });
-
-
 </script>
 
 </head>
@@ -91,10 +93,9 @@ jQuery(document).ready(function(){
   <div class="row">
    <div class="col-md-6">
    <img
-  src="resources/img/${produc.img }"
+  src="${pageContext.request.contextPath}/resources/img/${produc.img }"
   alt="Kodak Brownie Flash B Camera"
-  class="image-responsive" style='width:100%;'
- />
+  class="image-responsive" style="width: 100%;height: 70vh;"/>
    </div>
    
    <div class="col-md-6">
@@ -131,44 +132,67 @@ jQuery(document).ready(function(){
 
 <div class="row">
  <div class="col-md-12 bottom-rule">
-  <h2 class="product-price"> ${produc.price }</h2>
+  <h2 class="product-price"><span>&#8377;</span> ${produc.price }</h2>
  </div>
 </div><!-- end row -->
-<c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name  != 'lovely@gmail.com'}">
-          
+      
 <div class="form-group">
 <form action="catr" method="POST">
 <div class="row add-to-cart">
  <div class="col-md-5 product-qty">
  <input type='button' value='-' class='qtyminus' field='quantity' style="background-color: #4CAF50;"/>
-    <input type='text' name='quantity' value='1' class='qty'  min='1' />
+    <input type='text' id='quantity' name='quantity' value='1' class='qty'  min='1'  readonly/>
  
     <input type='button' value='+' class='qtyplus' field='quantity' style="background-color: #4CAF50;" />
 
  </div>
  <input name="id" type="hidden" value=${produc.id}>
+ 
+ 
+  <c:if test="${produc.stock eq 0}">
+
  <div class="col-md-4">
-   <button class="btn btn-success" type="submit">
+   <button class="btn btn-success" type="submit" style="cursor: not-allowed" >
    Add to Cart
   </button>
+   </div>
+ </c:if>
+ 
+   <c:if test="${produc.stock ge 1}">
+   
+   <input id="stock" name="id" type="hidden" value="${produc.stock}"> 
+    <input id="quantity" name="quantity" value=quantity type="hidden" />
+    <div class="col-md-4">
+   <button class="btn btn-success" type="submit" onclick="return checkstock()">
+   Add to Cart
+  </button>
+   
+   
+    <p id="error"></p>
+    </div>
+   </c:if>
   
- </div>
+
 </div><!-- end row -->
 </form>
 </div>
-</c:if>
- <c:if test="${pageContext.request.userPrincipal.name == null }">
- <a href="log" class="btn btn-success">log in to add items to cart</a>
- 
- </c:if>
+
+<c:if test="${produc.stock gt 0 }">
 <div class="row">
  <div class="col-md-4 text-center">
   <span class="monospaced">${produc.stock } <br> left </span>
  </div>
+ </div><!-- end row -->
+ </c:if>
  
-</div><!-- end row -->
+
+
 <div class="row">
- <div class="col-md-12 bottom-rule top-10"></div>
+ <div class="col-md-12 bottom-rule top-10">
+ <c:if test="${produc.stock == 0}">
+       <a href=""><p style="color:red;">OUT OF STOCK</p></a> 
+ </c:if> 
+ </div>
 </div><!-- end row -->
 
 <div class="row">
@@ -197,7 +221,7 @@ jQuery(document).ready(function(){
                                         <!-- SINGLE SERVICE -->
                                         <div class="col-md-4 col-sm-6 col-xs-12" data-wow-offset="10" data-wow-duration="1.5s" style="visibility: visible;
                                          -webkit-animation-duration: 1.5s;">
-                                           <a href="prolis?id=${design.id}&c_id=${design.category.c_id}"><img src="resources/img/${design.img }" 
+                                           <a href="prolis?id=${design.id}&c_id=${design.category.c_id}"><img src="${pageContext.request.contextPath}/resources/img/${design.img }" 
                                            class="img-responsive" style=" width: 100%; height: 50vh;"></a>
                                         </div>
                                         <!-- /END SINGLE SERVICE -->
@@ -211,12 +235,7 @@ jQuery(document).ready(function(){
                     </div>
 
             </div>
-            
-
-      <!--scripts loaded here-->
-
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+     
     </body>
     </html>
 

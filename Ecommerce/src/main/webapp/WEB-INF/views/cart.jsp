@@ -84,7 +84,7 @@
 							<td data-th="Product">
 								<div class="row">
 								
-									<div class="col-sm-2 "><img src="resources/img/${design.product.img }" alt="Chania" width="100" height="100" class="img-responsive"/></div>
+									<div class="col-sm-2 "><img src="${pageContext.request.contextPath}/resources/img/${design.product.img }" alt="Chania" width="100" height="100" class="img-responsive"/></div>
 									<div class="col-sm-10">
 									 
 										<h4 class="nomargin">${design.product.name }</h4>

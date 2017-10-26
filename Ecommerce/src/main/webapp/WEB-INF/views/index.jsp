@@ -82,7 +82,7 @@ html, body{
 
 
 
- <c:if test="${pageContext.request.userPrincipal.name  != 'lovely@gmail.com'}">
+ <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">
 
 <div class="container1"  style=" background-color:#000000">  
 <h2 style="color:#fff">Choose Your Sport</h2><br>  

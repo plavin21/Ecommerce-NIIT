@@ -16,7 +16,7 @@
 {
 
 width: 100%;
-  height: 75vh;
+  height: 50vh;
 }
 .thumbnail
 {
@@ -89,11 +89,12 @@ width: 100%;
 <div class="container">
     
     <div id="products" class="row list-group" >
+    
       <c:forEach var="design" items="${productli}">
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail" style="background-color:#222222; ">
            
-                <img class="group list-group-image" src="resources/img/${design.img }" alt="" />
+                <img class="group list-group-image" src="${pageContext.request.contextPath}/resources/img/${design.img }" alt="" />
                 
                 <div class="caption" style="color:white;">
                 <div class="row">

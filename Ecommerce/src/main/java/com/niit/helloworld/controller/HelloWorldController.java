@@ -79,19 +79,33 @@ public class HelloWorldController{
 		return mv1;
 	}
 	
+	@RequestMapping("/user")
+	public ModelAndView userhome(){
+		
+		System.out.println("in controller");
+		ModelAndView mv1 = new ModelAndView("index");
+		 ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+		 System.out.println("printing");
+		 for(Category cc:l)
+			{
+				System.out.println(cc);
+			}
+				
+				mv1.addObject("catego",l);
+		return mv1;
+	}
 	
 	
 	
-	
-	
-	
-
 	@RequestMapping("/catpro")
-	public ModelAndView productlist(@RequestParam ("id") int catego){
+	public ModelAndView cart(@RequestParam ("id") int catego){
+		
+		System.out.println("myke");
 		ModelAndView mv1 = new ModelAndView("productlist");
 		
-		ArrayList<Product> ll=(ArrayList<Product>)pdao.getProdBycatId(catego);
 		
+		ArrayList<Product> ll=(ArrayList<Product>)pdao.getProdBycatId(catego);
+		/*ArrayList<Product> ll=(ArrayList<Product>)pdao.getProdBycatId(catego);*/
 		
 		mv1.addObject("productli",ll);
 		
@@ -100,9 +114,35 @@ public class HelloWorldController{
 		
 				
 				mv1.addObject("catego",l);
+		
+	return mv1;
+		
+	}
+	
+	@RequestMapping("/user/catpro")
+	public ModelAndView userproductlist(@RequestParam ("id") int catego,RedirectAttributes redirectAttributes){
+		ModelAndView mv1 = new ModelAndView("redirect:/catpro");
+		redirectAttributes.addAttribute("id", catego);
+		
 				return mv1;
 		
 	} 
+
+	
+	@RequestMapping("/user/productlist")
+	public ModelAndView useproducts(@RequestParam ("id") int catego,RedirectAttributes redirectAttributes){
+		
+		System.out.println("myke");
+		
+		redirectAttributes.addAttribute("id", catego);
+		
+		
+		ModelAndView mv1 = new ModelAndView("redirect:/productlist");
+		
+				return mv1;
+		
+	}
+	
 	
 	@RequestMapping("/productlist")
 	public ModelAndView products(@RequestParam ("id") int catego){
@@ -123,6 +163,8 @@ public class HelloWorldController{
 		
 	} 
 	
+	
+	
 	@RequestMapping("/prolis")
 	public ModelAndView productdetail(@RequestParam ("id") int prod,@RequestParam("c_id") int catego){
 		ModelAndView mv1 = new ModelAndView("product");
@@ -141,6 +183,23 @@ public class HelloWorldController{
 				return mv1;
 		
 	} 
+	
+	
+	@RequestMapping("/user/prolis")
+	public ModelAndView prodlist(@RequestParam ("id") int prod,@RequestParam("c_id") int catego,RedirectAttributes redirectAttributes){
+		
+		System.out.println("myke");
+		
+		redirectAttributes.addAttribute("id", prod);
+		redirectAttributes.addAttribute("c_id", catego);
+		
+		
+		ModelAndView mv1 = new ModelAndView("redirect:/prolis");
+		
+				return mv1;
+		
+	}
+	
 	
 	@RequestMapping("/invalid")
 	public ModelAndView invalid(){

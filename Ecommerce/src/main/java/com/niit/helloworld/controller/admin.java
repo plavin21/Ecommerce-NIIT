@@ -113,6 +113,11 @@ public class admin {
 			ModelAndView mv1 = new ModelAndView("adding");
 			
 			
+			
+			
+			
+			
+			
 		
 			return mv1;
 		}
@@ -146,6 +151,8 @@ public class admin {
 			sdao.saveSupplier(s);
 			
 			ModelAndView mv1 = new ModelAndView("adding");
+			
+			
 			
 			
 		
@@ -719,41 +726,21 @@ public class admin {
 			
 		}
 		
-		@RequestMapping("/updateproduct")
-		public ModelAndView updatepro(@RequestParam("proid") int id ,@RequestParam("proname") String name,@RequestParam("cat") int cat,
-				@RequestParam("supp") int supp,
-				@RequestParam("price") int price,@RequestParam("stock") int stock,RedirectAttributes redirectAttributes){
-			
-			System.out.println("myke");
-			redirectAttributes.addAttribute("proid", "id");
-			redirectAttributes.addAttribute("proname", "name");
-			redirectAttributes.addAttribute("cat", "cat");
-			redirectAttributes.addAttribute("supp", "supp");
-			redirectAttributes.addAttribute("price", "price");
-			redirectAttributes.addAttribute("stock", "stock");
-			
-			ModelAndView mv1 = new ModelAndView("redirect:/admin/updateproduct");
-			ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-			
-					
-					mv1.addObject("catego",l);
-					return mv1;
-			
-		}
+		
 		
 		
 		@RequestMapping("/admin/updateproduct")
 		public ModelAndView updateproduct(@RequestParam("proid") int id ,@RequestParam("proname") String name,@RequestParam("cat") int cat,
 				@RequestParam("supp") int supp,
-				@RequestParam("price") int price,@RequestParam("stock") int stock){
+				@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file){
 		System.out.println("in controller");
 			System.out.println(name);
-			Product p=new Product();
+			Product p=pdao.getProductById(id);
 			p.setId(id);
 			p.setName(name);
 			p.setPrice(price);
 			p.setStock(stock);
-			
+					
 			Category ll=new Category();
 			ll=cdao.getcatbyid(cat);
 		    int cati=ll.getC_id();
@@ -775,10 +762,31 @@ public class admin {
 		    sss.setS_name(sup2);;
 		   
 		    p.setSupplier(sss);
+		    
+		    if(file.getOriginalFilename()!="")
+		    
+		    {
+		    String img=file.getOriginalFilename();
+			 p.setImg(img);	
+		    
+		    String filepath ="C:/Users/USER/workspace/Ecommerce/src/main/webapp/resources/img/" + file.getOriginalFilename();
 			
+			System.out.println(filepath);
+			try {
+				byte imagebyte[] = file.getBytes();
+				BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
+				fos.write(imagebyte);
+				fos.close();
+				} catch (IOException e) {
+				e.printStackTrace();
+				} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}
+		    }
 			
 			pdao.editProduct(p);
-			ModelAndView mv1 = new ModelAndView("updating");
+			ModelAndView mv1 = new ModelAndView("redirect:/updating");
 			
 			
 			

@@ -13,9 +13,6 @@
 
 <title>Insert title here</title>
 <style>
-
-
-
 html, body{
     color:white;
     background-color:#0000;
@@ -23,18 +20,13 @@ html, body{
     
     .thumbnail img
 {
-
 width: 100%;
   height: 50vh;
 }
-
 .add-to-cart .btn-qty {
   width: 52px;
   height: 46px;
 }
-
-
-
 .qty {
      color:black;
     width: 40px;
@@ -43,15 +35,10 @@ width: 100%;
 }
 input.qtyplus { width:25px; height:25px;}
 input.qtyminus { width:25px; height:25px;}
-
 .add-to-cart .btn { border-radius: 0; }
-
-
 </style>
 
 <script>
-
-
 function checkstock() {
     var quantity = document.getElementById("quantity").value;
     var stock = document.getElementById("stock").value;
@@ -61,9 +48,6 @@ function checkstock() {
     }
     return true;
 }
-
-
-
 jQuery(document).ready(function(){
     // This button will increment the value
     $('.qtyplus').click(function(e){
@@ -100,8 +84,6 @@ jQuery(document).ready(function(){
         }
     });
 });
-
-
 </script>
 
 </head>
@@ -111,7 +93,7 @@ jQuery(document).ready(function(){
   <div class="row">
    <div class="col-md-6">
    <img
-  src="resources/img/${produc.img }"
+  src="${pageContext.request.contextPath}/resources/img/${produc.img }"
   alt="Kodak Brownie Flash B Camera"
   class="image-responsive" style="width: 100%;height: 70vh;"/>
    </div>
@@ -153,8 +135,7 @@ jQuery(document).ready(function(){
   <h2 class="product-price"><span>&#8377;</span> ${produc.price }</h2>
  </div>
 </div><!-- end row -->
-<c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name  != 'lovely@gmail.com'}">
-          
+      
 <div class="form-group">
 <form action="catr" method="POST">
 <div class="row add-to-cart">
@@ -195,11 +176,7 @@ jQuery(document).ready(function(){
 </div><!-- end row -->
 </form>
 </div>
-</c:if>
- <c:if test="${pageContext.request.userPrincipal.name == null }">
- <a href="log" class="btn btn-success">log in to add items to cart</a>
- 
- </c:if>
+
 <c:if test="${produc.stock gt 0 }">
 <div class="row">
  <div class="col-md-4 text-center">
@@ -244,7 +221,7 @@ jQuery(document).ready(function(){
                                         <!-- SINGLE SERVICE -->
                                         <div class="col-md-4 col-sm-6 col-xs-12" data-wow-offset="10" data-wow-duration="1.5s" style="visibility: visible;
                                          -webkit-animation-duration: 1.5s;">
-                                           <a href="prolis?id=${design.id}&c_id=${design.category.c_id}"><img src="resources/img/${design.img }" 
+                                           <a href="prolis?id=${design.id}&c_id=${design.category.c_id}"><img src="${pageContext.request.contextPath}/resources/img/${design.img }" 
                                            class="img-responsive" style=" width: 100%; height: 50vh;"></a>
                                         </div>
                                         <!-- /END SINGLE SERVICE -->

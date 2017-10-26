@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.niit.EcommerceBackEnd.DAO.ProductDAO;
 import com.niit.EcommerceBackEnd.DAO.cartDAO;
@@ -42,11 +43,22 @@ public class cartcontroller {
 			
 			
 			
+
+			@RequestMapping("/cart")
+			public ModelAndView mycart(){
+				
+				
+				
+				ModelAndView mv1 = new ModelAndView("redirect:/user/cart");
+				
+						return mv1;
+				
+			}
 			
 
-			   
 			
-			@RequestMapping("/cart")
+			
+			@RequestMapping("/user/cart")
 			public ModelAndView cart(){
 				
 				ModelAndView mv1 = new ModelAndView("cart");
@@ -76,10 +88,25 @@ public class cartcontroller {
 			}
 			
 
-			
-			
-			
+
 			@RequestMapping("/catr")
+			public ModelAndView cart(@RequestParam("quantity") int quantity,@RequestParam("id") int id ,
+					RedirectAttributes redirectAttributes){
+				
+				System.out.println("myke");
+				redirectAttributes.addAttribute("quantity", quantity);
+				redirectAttributes.addAttribute("id", id);
+				
+				
+				ModelAndView mv1 = new ModelAndView("redirect:/user/catr");
+				
+						return mv1;
+				
+			}
+			
+			
+			
+			@RequestMapping("/user/catr")
 			public ModelAndView catr(@RequestParam("quantity") int quantity,@RequestParam("id") int id ){
 				
 				ModelAndView mv1 = new ModelAndView("product");
@@ -156,7 +183,7 @@ public class cartcontroller {
 				return mv1;
 			}
 			
-			@RequestMapping("/catr1")
+			/*@RequestMapping("/catr1")
 			public ModelAndView catr1(@RequestParam("id") int id ){
 				
 				ModelAndView mv1 = new ModelAndView("productlist");
@@ -195,11 +222,26 @@ public class cartcontroller {
 				
 				
 				return mv1;
+			}*/
+			
+			
+			@RequestMapping("/delcart")
+			public ModelAndView delcart(@RequestParam("id") int id ,RedirectAttributes redirectAttributes){
+				
+				System.out.println("myke");
+				
+				redirectAttributes.addAttribute("id", "id");
+				
+				
+				ModelAndView mv1 = new ModelAndView("redirect:/user/delcart");
+				
+						return mv1;
+				
 			}
 			
 			
 			
-			@RequestMapping("delcart")
+			@RequestMapping("/user/delcart")
 			public ModelAndView cartdelete(@RequestParam ("id") int carId){
 				ModelAndView mv1 = new ModelAndView("cart");
 				
