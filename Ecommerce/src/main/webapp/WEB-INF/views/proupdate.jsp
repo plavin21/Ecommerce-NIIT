@@ -134,6 +134,7 @@ select {
 </select>
 
 </td></tr>
+<tr><td>DESCRIPTION</td><td><input type="text"  name="description" required style="width:100%"  value="${product.desc }"></td></tr>
 
 <tr><td>PRICE</td><td><input type="text"  name="price" required style="width:100%"  value="${product.price }"></td></tr>
 <tr><td>STOCK</td><td><input type="text"  name="stock" required style="width:100%"  value="${product.stock }"></td></tr>

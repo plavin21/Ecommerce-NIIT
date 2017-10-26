@@ -108,8 +108,7 @@ jQuery(document).ready(function(){
 <div class="row">
  <div class="col-md-12">
   <p class="description">
-   Classic film camera. Uses 620 roll film.
-   Has a 2&frac14; x 3&frac14; inch image size.
+   ${produc.desc }
   </p>
  </div>
 </div><!-- end row -->

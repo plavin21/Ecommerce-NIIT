@@ -108,8 +108,7 @@ jQuery(document).ready(function(){
 <div class="row">
  <div class="col-md-12">
   <p class="description">
-   Classic film camera. Uses 620 roll film.
-   Has a 2&frac14; x 3&frac14; inch image size.
+   ${produc.desc }
   </p>
  </div>
 </div><!-- end row -->
@@ -163,9 +162,13 @@ jQuery(document).ready(function(){
    <input id="stock" name="id" type="hidden" value="${produc.stock}"> 
     <input id="quantity" name="quantity" value=quantity type="hidden" />
     <div class="col-md-4">
-   <button class="btn btn-success" type="submit" onclick="return checkstock()">
+   <button class="btn btn-success" type="submit" onclick="return checkstock()" >
    Add to Cart
   </button>
+    <!-- Modal -->
+ 
+          <h4 >${modal }</h4>
+       
    
    
     <p id="error"></p>

@@ -203,7 +203,8 @@ public class HelloWorldController{
 	
 	@RequestMapping("/invalid")
 	public ModelAndView invalid(){
-		ModelAndView mv1 = new ModelAndView("error");
+		ModelAndView mv1 = new ModelAndView("log");
+		mv1.addObject("invalid","Invalid Username/Password,Please login again");
 	return mv1;
 	
 	}

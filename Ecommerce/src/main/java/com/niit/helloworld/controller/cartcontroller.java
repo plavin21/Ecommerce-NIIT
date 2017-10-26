@@ -110,6 +110,7 @@ public class cartcontroller {
 			public ModelAndView catr(@RequestParam("quantity") int quantity,@RequestParam("id") int id ){
 				
 				ModelAndView mv1 = new ModelAndView("product");
+				mv1.addObject("modal","added to cart");
 				String name = SecurityContextHolder.getContext().getAuthentication().getName();
 			    
 				Product p=new Product();

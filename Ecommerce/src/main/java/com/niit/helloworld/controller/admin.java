@@ -162,7 +162,7 @@ public class admin {
 		
 		@RequestMapping("/addP")
 		public ModelAndView addP(@RequestParam("pname") String name,@RequestParam("cat") int cat,@RequestParam("supp") int supp,
-				@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file,RedirectAttributes redirectAttributes/*,@RequestParam("desc") String desc*/ ) 
+				@RequestParam("description") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file,RedirectAttributes redirectAttributes/*,@RequestParam("desc") String desc*/ ) 
 		{
 
 			
@@ -170,6 +170,7 @@ public class admin {
 			redirectAttributes.addAttribute("pname", "name");
 			redirectAttributes.addAttribute("cat", "cat");
 			redirectAttributes.addAttribute("supp", "supp");
+			redirectAttributes.addAttribute("description", "desc");
 			redirectAttributes.addAttribute("price", "price");
 			redirectAttributes.addAttribute("stock", "stock");
 			redirectAttributes.addAttribute("img", "img");
@@ -186,13 +187,14 @@ public class admin {
 		
 		@RequestMapping("/admin/addP")
 		public ModelAndView addpro(@RequestParam("pname") String name,@RequestParam("cat") int cat,@RequestParam("supp") int supp,
-				@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file/*,@RequestParam("desc") String desc*/ ) {
+				@RequestParam("desc") String desc,@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file/*,@RequestParam("desc") String desc*/ ) {
 			System.out.println("in controller");
 			System.out.println(name+cat+supp+price+stock);
 			Product p=new Product();
 			
 			String img=file.getOriginalFilename();
 			p.setName(name);
+			p.setDesc(desc);
 			
 			p.setPrice(price);
 			p.setStock(stock);
@@ -731,7 +733,7 @@ public class admin {
 		
 		@RequestMapping("/admin/updateproduct")
 		public ModelAndView updateproduct(@RequestParam("proid") int id ,@RequestParam("proname") String name,@RequestParam("cat") int cat,
-				@RequestParam("supp") int supp,
+				@RequestParam("supp") int supp,@RequestParam("description") String desc,
 				@RequestParam("price") int price,@RequestParam("stock") int stock,@RequestParam("img") MultipartFile file){
 		System.out.println("in controller");
 			System.out.println(name);
@@ -739,6 +741,7 @@ public class admin {
 			p.setId(id);
 			p.setName(name);
 			p.setPrice(price);
+			p.setDesc(desc);
 			p.setStock(stock);
 					
 			Category ll=new Category();

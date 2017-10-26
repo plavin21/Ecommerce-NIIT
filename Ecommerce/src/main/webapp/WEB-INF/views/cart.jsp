@@ -88,7 +88,7 @@
 									<div class="col-sm-10">
 									 
 										<h4 class="nomargin">${design.product.name }</h4>
-										<p>paul pogba man utd t shirt NO 6
+										<p>${design.product.desc }
 										</p>	</div>
 								</div>
 							</td>

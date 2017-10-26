@@ -98,7 +98,7 @@ select {
 
 
 
-<form action="updateproduct" method="post" enctype="mutipart/form-data">
+<form action="updateproduct" method="post" enctype="multipart/form-data">
 
       <table >
      
@@ -134,6 +134,7 @@ select {
 </select>
 
 </td></tr>
+<tr><td>DESCRIPTION</td><td><input type="text"  name="description" required style="width:100%"  value="${product.desc }"></td></tr>
 
 <tr><td>PRICE</td><td><input type="text"  name="price" required style="width:100%"  value="${product.price }"></td></tr>
 <tr><td>STOCK</td><td><input type="text"  name="stock" required style="width:100%"  value="${product.stock }"></td></tr>
@@ -145,7 +146,7 @@ select {
 									
 								
 							</td></tr>
-<tr><td>CHANGE IMG</td><td><input type="file" name="img" placeholder="browse" required="required" /></td></tr>
+<tr><td>CHANGE IMG</td><td><input type="file" name="img" placeholder="browse"  /></td></tr>
    
 
 
