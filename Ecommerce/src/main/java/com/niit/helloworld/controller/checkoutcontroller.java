@@ -80,7 +80,7 @@ public class checkoutcontroller {
 				
 
 				@RequestMapping("/checkadd")
-				public ModelAndView addcheck(@RequestParam("name") String name,@RequestParam("mobile") int no,@RequestParam("address")
+				public ModelAndView addcheck(@RequestParam("name") String name,@RequestParam("mobile") long no,@RequestParam("address")
 				String addr,@RequestParam("state") String state,@RequestParam("zip") int zip,RedirectAttributes redirectAttributes){
 					
 					System.out.println("myke");
@@ -101,7 +101,7 @@ public class checkoutcontroller {
 				
 				
 				@RequestMapping("/user/checkadd")
-				public ModelAndView checkadd(@RequestParam("name") String name,@RequestParam("mobile") int no,@RequestParam("address")
+				public ModelAndView checkadd(@RequestParam("name") String name,@RequestParam("mobile") long no,@RequestParam("address")
 				String addr,@RequestParam("state") String state,@RequestParam("zip") int zip){
 					
 					ModelAndView mv1 = new ModelAndView("payment");
