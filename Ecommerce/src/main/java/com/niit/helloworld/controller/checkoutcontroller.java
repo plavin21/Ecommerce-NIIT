@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.hibernate.metamodel.relational.Size;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +44,9 @@ public class checkoutcontroller {
 				
 				@Autowired
 				orderDAO odao;
+				
+				@Autowired
+				private MailSender sendmail;
 				
 
 				@RequestMapping("/checkout")
@@ -210,10 +215,20 @@ public class checkoutcontroller {
 					
 					ModelAndView mv1 = new ModelAndView("thankyou");
 					String name=SecurityContextHolder.getContext().getAuthentication().getName();
-					cardao.deletecartByuserId(name);
+					Orders oder=new Orders();
+					oder=odao.getorderByuserId(name);
+					String uname=oder.getName();
 					
 					
-					
+						
+					SimpleMailMessage emaill = new SimpleMailMessage();
+			        emaill.setTo("plavinpaul11@gmail.com");
+			        emaill.setSubject("Order Confirmation");
+			        
+			        emaill.setText("hi "+uname+",\nYour Order is Placed Succesfully..");
+			        // sends the e-mail
+			        sendmail.send(emaill);
+			        cardao.deletecartByuserId(name);
 							
 							return mv1;
 					

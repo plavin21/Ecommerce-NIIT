@@ -17,6 +17,8 @@ import javax.validation.Valid;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -59,6 +61,8 @@ public class HelloWorldController{
 	@Autowired
 	cartDAO cardao;
 	
+	
+	
 	String message ="Welcome to Spring MVC!";
 	 
 	
@@ -76,6 +80,9 @@ public class HelloWorldController{
 			}
 				
 				mv1.addObject("catego",l);
+				
+				
+				
 		return mv1;
 	}
 	

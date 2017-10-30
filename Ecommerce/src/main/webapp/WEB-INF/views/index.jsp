@@ -105,8 +105,7 @@ html, body{
  
   </div> 
   </c:if>
-  </section>
-
+ 
 <%@ include file = "footer.jsp" %>
 </body>
 </html>
