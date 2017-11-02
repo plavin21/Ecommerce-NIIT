@@ -23,7 +23,7 @@ body {
 	background: #000000;
 	color: #fff;
 	}
-input[type=text],input[type=email], input[type=password] {
+input[type=text],[type=long],input[type=email], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -81,10 +81,10 @@ input {
   	<h1>Signup </h1>
   <form method="post" action="register" >    
   	
-   		<input type=text name="email" placeholder="Email ID" required="required" />
-   		<input type=text name="mobile" placeholder="Phone NO" required="required" />
-        <input type=text name="name" placeholder="UserName" required="required" />
-         <input type=text name="address" placeholder="Address" required="required" />
+   		<input type=text pattern="[a-z0-9._%+-]+@[a-z]+\.[a-z]{2,3}$"  title="rahul@gmail.com" name="email" placeholder="Email ID" required="required" />
+   		<input type=long pattern="[0-9]+"  name="mobile" placeholder="Phone NO" required="required" />
+        <input type=text pattern="[a-z]+" name="name" placeholder="UserName" required="required" />
+         <input type=text pattern="[a-z0-9._]+" name="address" placeholder="Address" required="required" />
           
 
         <input name="password" input type="password" id="password"  placeholder="Password" required="required" />

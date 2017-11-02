@@ -1,5 +1,7 @@
-com\niit\helloworld\controller\admin.class
+com\niit\helloworld\controller\categorycontroller.class
+com\niit\helloworld\controller\productcontroller.class
 com\niit\helloworld\controller\cartcontroller.class
+com\niit\helloworld\controller\suppliercontroller.class
 com\niit\helloworld\controller\HelloWorldController.class
 com\niit\helloworld\controller\usercontroller.class
 com\niit\helloworld\controller\checkoutcontroller.class

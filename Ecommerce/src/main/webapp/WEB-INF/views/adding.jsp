@@ -128,8 +128,9 @@ select.classic:focus {
     <div id="home" class="tab-pane fade in active">
       <h3>category</h3>
      
-     <form method="post" action="addC">
+     <form method="post" action="addC" enctype="multipart/form-data">
     	<input type="text" name="cname" placeholder="category" required="required" />
+    	<input type="file" name="cimg" placeholder="browse" required="required" />
        <button type="submit" class="btn btn-primary btn-block btn-large" >Add</button>
       
     </form>

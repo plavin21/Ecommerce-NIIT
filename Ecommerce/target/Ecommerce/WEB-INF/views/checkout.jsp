@@ -13,7 +13,7 @@
   
 <style>
 
-input[type=text],input[type=number]{
+input[type=text],input[type=long],input[type=number]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -241,7 +241,7 @@ body {
   <form method="post" action="checkadd" >    
   	
    		<input type=text name="name" placeholder="NAME" />
-   		<input type=number name="mobile" placeholder="PHONE NO" />
+   		<input type=long name="mobile" placeholder="PHONE NO" />
         <input type=text name="address" placeholder="ADDRESS" />
          
          <input type=text name="state" placeholder="STATE" />

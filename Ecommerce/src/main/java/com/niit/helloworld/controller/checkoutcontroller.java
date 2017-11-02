@@ -84,25 +84,6 @@ public class checkoutcontroller {
 				}
 				
 
-				@RequestMapping("/checkadd")
-				public ModelAndView addcheck(@RequestParam("name") String name,@RequestParam("mobile") long no,@RequestParam("address")
-				String addr,@RequestParam("state") String state,@RequestParam("zip") int zip,RedirectAttributes redirectAttributes){
-					
-					System.out.println("myke");
-					
-					redirectAttributes.addAttribute("name", "name");
-					redirectAttributes.addAttribute("mobile", "no");
-					redirectAttributes.addAttribute("address", "addr");
-					redirectAttributes.addAttribute("state", "state");
-					redirectAttributes.addAttribute("zip", "zip");
-					
-					
-					
-					ModelAndView mv1 = new ModelAndView("redirect:/user/checkadd");
-					
-							return mv1;
-					
-				}
 				
 				
 				@RequestMapping("/user/checkadd")
@@ -114,9 +95,7 @@ public class checkoutcontroller {
 					
 					
 					ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-					
-							
-							mv1.addObject("catego",l);
+					mv1.addObject("catego",l);
 							Orders order=new Orders();
 							order.setName(name);
 							order.setMobno(no);
@@ -133,24 +112,10 @@ public class checkoutcontroller {
 					return mv1;
 				}
 				
-				@RequestMapping("/confirm")
+				@RequestMapping("/user/confirm")
 				public ModelAndView confirm(){
 					
-					System.out.println("myke");
-					
-					
-					ModelAndView mv1 = new ModelAndView("redirect:/user/confirm");
-					
-							return mv1;
-					
-				}
-				
-				
-				@RequestMapping("/user/confirm")
-				public ModelAndView checkpay(){
-					
 					ModelAndView mv1 = new ModelAndView("confirm");
-					
 					
 					ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
 					
@@ -177,33 +142,53 @@ public class checkoutcontroller {
 						mv1.addObject("sum",total);
 
 						
-						return mv1;
+						
+					
+							return mv1;
 					
 				}
 				
-				/*@RequestMapping("/edconfirm")
-				public ModelAndView checkconfirm(){
+				
+				@RequestMapping("/user/confirm")
+				public ModelAndView checkpay(){
 					
-					ModelAndView mv1 = new ModelAndView("edconfirm");
+					ModelAndView mv1 = new ModelAndView("redirect:/user/confirm");
 					
 					
-					ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+					return mv1;
 					
+				}
+				@RequestMapping("/user/cancelord")
+				public ModelAndView cancelorders(@RequestParam ("id") int id){
+					
+					odao.deletefromorder(id);
+					String name=SecurityContextHolder.getContext().getAuthentication().getName();
+					ArrayList<Cart> ll=(ArrayList<Cart>)cardao.getcartByuserId(name);
+					ModelAndView mv1 = new ModelAndView("redirect:/user/cartpage");
+					mv1.addObject("cartlis",ll);
+					
+					int total=0;
+					for (Cart cart : ll) {
+						
+						int sum=cart.getPrice()*cart.getQuantity();
+						total=total+sum;
+					}	   
+					
+					
+							mv1.addObject("sum",total);
 							
-							mv1.addObject("catego",l);
+							ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+							mv1.addObject("catego",l);	
+					
 							
 							return mv1;
 					
-				}*/
-				
-				
-				@RequestMapping("/checkord")
+				}
+				@RequestMapping("/user/thankyou")
 				public ModelAndView ordercheck(){
 					
-					System.out.println("myke");
 					
-					
-					ModelAndView mv1 = new ModelAndView("redirect:/user/checkord");
+					ModelAndView mv1 = new ModelAndView("thankyou");
 					
 							return mv1;
 					
@@ -213,7 +198,7 @@ public class checkoutcontroller {
 				@RequestMapping("/user/checkord")
 				public ModelAndView checkorder(){
 					
-					ModelAndView mv1 = new ModelAndView("thankyou");
+					ModelAndView mv1 = new ModelAndView("redirect:/user/thankyou");
 					String name=SecurityContextHolder.getContext().getAuthentication().getName();
 					Orders oder=new Orders();
 					oder=odao.getorderByuserId(name);

@@ -356,9 +356,15 @@ body {
     		</div>
     	</div>
     </div>
-    
-     
+    <div class="col-xs-12">
+     <div class="col-xs-6">
+    <a href="cancelord?id=${orders.ordid }" class="btn btn-danger" role="button">Cancel Your Order</a>
+   </div>
+   <div class="col-xs-6">
+  
     <a href="checkord" class="btn btn-info" role="button">Place Your Order</a>
+   </div>
+   </div>
    
    
 </div>

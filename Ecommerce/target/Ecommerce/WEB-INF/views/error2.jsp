@@ -23,7 +23,7 @@
 </head>
 <body style="background-color:black;" >
 <div class="container">
-  <img src="${pageContext.request.contextPath}/resources/img/11.jpg" alt="Norway" style="width:100%;">
+  <img src="${pageContext.request.contextPath}/resources/img/vendhq.png" alt="Norway" style="width:100%;">
   
   <div class="top-left">
  <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">

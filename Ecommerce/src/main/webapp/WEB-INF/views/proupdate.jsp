@@ -108,7 +108,7 @@ select {
 <tr><td>CATEGORY</td><td>
 <select name="cat" class="classic" style="color:#fff; width:100%; overflow:hidden"  >
 
-<option value="desigType">${product.category.c_title }</option>
+<option value=${product.category.c_id }>${product.category.c_title }</option>
 <c:forEach var="designatee" items="${categorylis}">
 
 
@@ -125,7 +125,7 @@ select {
 <tr><td>SUPPLIER</td><td>
 
         <select name="supp" class="classic" style="color:#fff; width:100%; overflow:hidden"  >
-<option value="desigType"> ${product.supplier.s_name }</option>
+<option value="${product.supplier.s_id }"> ${product.supplier.s_name }</option>
  <c:forEach var="designate" items="${supplier}">
                        
                             <option value="${designate.s_id}">${designate.s_name}</option>

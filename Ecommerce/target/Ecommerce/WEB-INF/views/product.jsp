@@ -13,6 +13,7 @@
 
 <title>Insert title here</title>
 <style>
+
 html, body{
     color:white;
     background-color:#0000;
@@ -39,15 +40,19 @@ input.qtyminus { width:25px; height:25px;}
 </style>
 
 <script>
+
+
+
+
 function checkstock() {
-    var quantity = document.getElementById("quantity").value;
+	var quantity = document.getElementById("quantity").value;
     var stock = document.getElementById("stock").value;
-    if (quantity > stock) {
-    	 document.getElementById("error").innerHTML = "This Item Is Limited";
+    if (quantity > stock ) {
+    	 document.getElementById("myerror").innerHTML = "This Item Is Limited";
         return false;
     }
     return true;
-}
+		}
 jQuery(document).ready(function(){
     // This button will increment the value
     $('.qtyplus').click(function(e){
@@ -148,26 +153,17 @@ jQuery(document).ready(function(){
  <input name="id" type="hidden" value=${produc.id}>
  
  
-  <c:if test="${produc.stock eq 0}">
-
- <div class="col-md-4">
-   <button class="btn btn-success" type="submit" style="cursor: not-allowed" >
-   Add to Cart
-  </button>
-   </div>
- </c:if>
+ 
  
    <c:if test="${produc.stock ge 1}">
    
    <input id="stock" name="id" type="hidden" value="${produc.stock}"> 
     <input id="quantity" name="quantity" value=quantity type="hidden" />
     <div class="col-md-4">
-   <button class="btn btn-success" type="submit" onclick="return checkstock()">
+   <button class="btn btn-success" type="submit" onclick="return checkstock()" >
    Add to Cart
   </button>
-   
-   
-    <p id="error"></p>
+<p style=color:red; id="error"></p>
     </div>
    </c:if>
   
@@ -234,6 +230,8 @@ jQuery(document).ready(function(){
                     </div>
 
             </div>
+   
+
      
     </body>
     </html>

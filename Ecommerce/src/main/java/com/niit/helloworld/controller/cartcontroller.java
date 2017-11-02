@@ -56,34 +56,44 @@ public class cartcontroller {
 			}
 			
 
+			@RequestMapping("/user/cartpage")
+			public ModelAndView cartpage(){
+				
+				
+				
+				ModelAndView mv1 = new ModelAndView("cart");
+				String Username=SecurityContextHolder.getContext().getAuthentication().getName();
+				
+				ArrayList<Cart> ll=(ArrayList<Cart>)cardao.getcartByuserId(Username);
+				mv1.addObject("cartlis",ll);
+				int total=0;
+		for (Cart cart : ll) {
+			
+			int sum=cart.getPrice()*cart.getQuantity();
+			total=total+sum;
+		}	   
+		
+		
+				mv1.addObject("sum",total);
+				
+				ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
+				
+				
+				mv1.addObject("catego",l);
+				
+				
+				
+						return mv1;
+				
+			}
 			
 			
 			@RequestMapping("/user/cart")
 			public ModelAndView cart(){
 				
-				ModelAndView mv1 = new ModelAndView("cart");
+				ModelAndView mv1 = new ModelAndView("redirect:/user/cartpage");
 				
-				
-				ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-				
-						
-						mv1.addObject("catego",l);
-						String Username=SecurityContextHolder.getContext().getAuthentication().getName();
-						
-						ArrayList<Cart> ll=(ArrayList<Cart>)cardao.getcartByuserId(Username);
-						mv1.addObject("cartlis",ll);
-						int total=0;
-				for (Cart cart : ll) {
-					
-					int sum=cart.getPrice()*cart.getQuantity();
-					total=total+sum;
-				}	   
-				
-				
-						mv1.addObject("sum",total);
-
-						
-						return mv1;
+				return mv1;
 				
 			}
 			
@@ -164,36 +174,7 @@ public class cartcontroller {
 			    	
 			    }
 				
-			
-				
-			     
-
-				Product lll=new Product();
-				 lll=pdao.getProductById(id);
-				 ModelAndView mv1 = new ModelAndView("cart");
-				mv1.addObject("produc",lll);
-				
-				String username = SecurityContextHolder.getContext().getAuthentication().getName();
-				ArrayList<Cart> ll=(ArrayList<Cart>)cardao.getcartByuserId(username);
-				mv1.addObject("cartlis",ll);
-				int total=0;
-		for (Cart cart : ll) {
-			
-			int sum=cart.getPrice()*cart.getQuantity();
-			total=total+sum;
-		}	   
-		
-		
-				mv1.addObject("sum",total);
-				
-				
-				Category c=lll.getCategory();
-				int c_id=c.getC_id();
-				ArrayList<Product> pr=(ArrayList<Product>)pdao.getProdBycatId(c_id);
-				mv1.addObject("productli",pr);
-				
-				ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-				mv1.addObject("catego",l);
+				 ModelAndView mv1 = new ModelAndView("redirect:/user/cartpage");
 				
 				return mv1;
 			}
@@ -240,25 +221,11 @@ public class cartcontroller {
 			}*/
 			
 			
-			@RequestMapping("/delcart")
-			public ModelAndView delcart(@RequestParam("id") int id ,RedirectAttributes redirectAttributes){
-				
-				System.out.println("myke");
-				
-				redirectAttributes.addAttribute("id", "id");
-				
-				
-				ModelAndView mv1 = new ModelAndView("redirect:/user/delcart");
-				
-						return mv1;
-				
-			}
-			
 			
 			
 			@RequestMapping("/user/delcart")
 			public ModelAndView cartdelete(@RequestParam ("id") int carId){
-				ModelAndView mv1 = new ModelAndView("cart");
+				ModelAndView mv1 = new ModelAndView("redirect:/user/cartpage");
 				
 				Cart c=cardao.getcartbyid(carId);
 				Product p=pdao.getProductById(c.getProduct().getId());
@@ -268,16 +235,6 @@ public class cartcontroller {
 				
 				
 				cardao.deletefromcart(carId);
-				
-				String Username=SecurityContextHolder.getContext().getAuthentication().getName();
-		         ArrayList<Cart> ll=(ArrayList<Cart>)cardao.getcartByuserId(Username);
-				
-				
-				mv1.addObject("cartlis",ll);
-				
-				ArrayList<Category> l=(ArrayList<Category>)cdao.getallcategories();
-				mv1.addObject("catego",l);
-				
 				
 				
 					return mv1;

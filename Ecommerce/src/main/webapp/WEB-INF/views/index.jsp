@@ -23,6 +23,8 @@ html, body{
   background-position:center center;
   background-size:cover;
 }
+.panel-body {
+background:#000000;}
 .slide-wrapper{display:inline;}
 .slide-wrapper .container{padding:0px;}
 
@@ -92,8 +94,12 @@ html, body{
     <div class="col-sm-4">
       <div class="panel panel-primary">
        
-            <div class="panel-heading" > </div>
-             <div class="panel-footer"><a href="catpro?id=${designatee.c_id}"> ${designatee.c_title}</a></div>
+            <div class="panel-heading text-center" >${designatee.c_title} </div>
+             <div class="panel-body "><a href="catpro?id=${designatee.c_id}">
+               <img class="panel-profile-img"  src="resources/img/${designatee.img }" style="width:100%;
+    height:100%;"></a>
+               </div>
+             
            
         
         

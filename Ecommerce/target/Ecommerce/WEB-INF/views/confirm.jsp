@@ -18,12 +18,16 @@
   
 </head>
 
-<script type="text/javascript">
+<script >
+var today = new Date;
+document.getElementById('date').innerHTML= today.toDateString();
 
 window.history.forward();
 function noBack() {
 	window.history.forward(); 
 	}
+
+
 
 </script>
   
@@ -69,6 +73,10 @@ button {
 }
 
 .table > tbody {
+
+color:#000000
+}
+.table > thead {
 
 color:#000000
 }
@@ -245,14 +253,27 @@ body {
 
     <div class="row">
         <div class="col-xs-12">
-    		<div class="invoice-title">
-    			<h2 style="text-align:center" >Invoice</h2><h3 class="pull-right">Order # 12345</h3>
+           <div class="invoice-title">
+    			<h2 style="text-align:center" >SPORTZ ARENA</h2>
     		</div>
-    		<hr>
+        <hr>
+        <div class="invoice-title">
+    			<h4 style="text-align:center" >ORDER CONFIRMATION</h4>
+    		</div>
+    		
+        <div class="invoice-title">
+    			<p style="text-align:left" >Hello ${orders.name } ,<br/>
+    			Thank you for purchasing from Sportz Arena. This is a confirmation that we have received your order with the details below,
+    			</p>
+    		</div>
+        
+        
+    		
+    		<br><br>
     		<div class="row">
     			<div class="col-xs-6">
     				<address>
-    				<strong>Billed To:</strong><br>
+    				<p style="color:aqua;">Shipped To:</p><br>
     				
     					${orders.name } <br>
     					${orders.mobno } <br>
@@ -265,23 +286,21 @@ body {
     			</div>
     			<div class="col-xs-6">
     				<address>
-    					<strong>Payment Method:</strong><br>
+    					<p style="color:aqua;">Payment Method:</p><br>
     					Visa ending **** 4242<br>
     					${orders.email } 
+    				</address>
+    				<address>
+    					<p style="color:aqua;">Order Date:</p><br><p class="marquee">
+    							<span id="dtText"></span>
+									</p>
+						<br><br>
     				</address>
     			</div>
     			
     		</div>
     				
-    		<div class="row">
-    			
-    			<div class="col-xs-6 text-right">
-    				<address>
-    					<strong>Order Date:</strong><br>
-    					March 7, 2014<br><br>
-    				</address>
-    			</div>
-    		</div>
+    		
     	</div>
     </div>
     
@@ -337,9 +356,15 @@ body {
     		</div>
     	</div>
     </div>
-    
-     
+    <div class="col-xs-12">
+     <div class="col-xs-6">
+    <a href="cancelord?id=${orders.ordid }" class="btn btn-danger" role="button">Cancel Your Order</a>
+   </div>
+   <div class="col-xs-6">
+  
     <a href="checkord" class="btn btn-info" role="button">Place Your Order</a>
+   </div>
+   </div>
    
    
 </div>

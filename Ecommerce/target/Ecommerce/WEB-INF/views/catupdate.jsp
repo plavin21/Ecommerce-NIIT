@@ -90,15 +90,20 @@ input {
 
 
 
-<form action="updatecategory" method="post">
+<form action="updatecategory" method="post" enctype="multipart/form-data">
 
       <table >
      
 
 <tr><td>CATEGORY  ID</td><td><input type="number"   name="catid"   value="${category.c_id }" style="opacity: 0.65; cursor: not-allowed;width:100%" ></td></tr>
 <tr><td>CATEGORY NAME</td><td><input type="text"  name="catname" required style="width:100%"  value="${category.c_title }"></td></tr>
-
-
+<tr><td>IMG</td><td >
+								
+<img src="${pageContext.request.contextPath}/resources/img/${category.img }" alt="Chania" width="100" height="100" class="img-responsive"/>
+									
+								
+							</td></tr>
+<tr><td>CHANGE IMG</td><td><input type="file" name="cimg" placeholder="browse"  /></td></tr>
 <tr><td></td><td><input id="submit" class="btn btn-info btn-md" name="submit" type="submit" value="UPDATE" style="width:100%"></td></tr>
 
 </table>
