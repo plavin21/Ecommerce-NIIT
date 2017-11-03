@@ -48,7 +48,7 @@ function checkstock() {
 	var quantity = document.getElementById("quantity").value;
     var stock = document.getElementById("stock").value;
     if (quantity > stock ) {
-    	 document.getElementById("myerror").innerHTML = "This Item Is Limited";
+    	 document.getElementById("error").innerHTML = "This Item Is Limited";
         return false;
     }
     return true;

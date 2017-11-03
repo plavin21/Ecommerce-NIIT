@@ -241,11 +241,11 @@ body {
   <form method="post" action="checkadd" >    
   	
    		<input type=text name="name" placeholder="NAME" />
-   		<input type=long name="mobile" placeholder="PHONE NO" />
+   		<input type=long pattern="[789][0-9]{9}" name="mobile" placeholder="PHONE NO" />
         <input type=text name="address" placeholder="ADDRESS" />
          
          <input type=text name="state" placeholder="STATE" />
-         <input type=number name="zip" placeholder="ZIP" />
+         <input type=number pattern="[0-9]{6}" name="zip" placeholder="ZIP" />
           
 
        

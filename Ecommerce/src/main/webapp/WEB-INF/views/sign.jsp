@@ -82,12 +82,12 @@ input {
   <form method="post" action="register" >    
   	
    		<input type=text pattern="[a-z0-9._%+-]+@[a-z]+\.[a-z]{2,3}$"  title="rahul@gmail.com" name="email" placeholder="Email ID" required="required" />
-   		<input type=long pattern="[0-9]+"  name="mobile" placeholder="Phone NO" required="required" />
-        <input type=text pattern="[a-z]+" name="name" placeholder="UserName" required="required" />
-         <input type=text pattern="[a-z0-9._]+" name="address" placeholder="Address" required="required" />
+   		<input type=long pattern="[789][0-9]{9}"  name="mobile" title="10 digits/start with 7/8/9" placeholder="Phone NO" required="required" />
+        <input type=text  name="name" placeholder="UserName" required="required" />
+         <input type=text name="address" placeholder="Address" required="required" />
           
 
-        <input name="password" input type="password" id="password"  placeholder="Password" required="required" />
+        <input name="password" title="1 caps & 1 small & 1 number" input type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" id="password"  placeholder="Password" required="required" />
         
 
     <p style="color:#fff">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>

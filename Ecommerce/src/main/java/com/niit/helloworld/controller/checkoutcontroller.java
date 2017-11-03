@@ -148,16 +148,16 @@ public class checkoutcontroller {
 					
 				}
 				
-				
+				/*
 				@RequestMapping("/user/confirm")
 				public ModelAndView checkpay(){
 					
-					ModelAndView mv1 = new ModelAndView("redirect:/user/confirm");
+					ModelAndView mv1 = new ModelAndView("redirect:/user/confirm1");
 					
 					
 					return mv1;
 					
-				}
+				}*/
 				@RequestMapping("/user/cancelord")
 				public ModelAndView cancelorders(@RequestParam ("id") int id){
 					

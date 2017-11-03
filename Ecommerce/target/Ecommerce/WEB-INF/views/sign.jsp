@@ -82,7 +82,7 @@ input {
   <form method="post" action="register" >    
   	
    		<input type=text pattern="[a-z0-9._%+-]+@[a-z]+\.[a-z]{2,3}$"  title="rahul@gmail.com" name="email" placeholder="Email ID" required="required" />
-   		<input type=long pattern="[0-9]+"  name="mobile" placeholder="Phone NO" required="required" />
+   		<input type=long pattern="/(7|8|9)\d{9}/"  name="mobile" placeholder="Phone NO" required="required" />
         <input type=text pattern="[a-z]+" name="name" placeholder="UserName" required="required" />
          <input type=text pattern="[a-z0-9._]+" name="address" placeholder="Address" required="required" />
           

@@ -24,7 +24,7 @@ html, body{
   background-size:cover;
 }
 .panel-body {
-background:#000000;}
+background:#222;}
 .slide-wrapper{display:inline;}
 .slide-wrapper .container{padding:0px;}
 
